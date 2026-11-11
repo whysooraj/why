@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>sooraj · systems, tools & craft</title>
-  <meta name="description" content="sooraj (whysooraj). systems, tools, and craft in bengaluru. builds software that feels good and doesn't break.">
+  <meta name="description" content="sooraj (whysooraj). software engineering, web dev, and ai/ml in bengaluru. builds tools that feel good and don't break.">
   <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
   
   <!-- Fonts: Instrument Serif + Geist + Architects Daughter -->
@@ -20,16 +20,16 @@
   <!-- Sticky Minimal Navigation -->
   <header class="nav-wrap">
     <div class="nav">
-      <a href="#" class="nav-mark" aria-label="whysooraj home">
+      <a href="index.html" class="nav-mark" aria-label="whysooraj home">
         whysooraj.
         <span class="nav-status" title="building in bengaluru"></span>
       </a>
 
       <nav class="nav-links">
-        <a href="#about" class="nav-link">about</a>
-        <a href="#work" class="nav-link">work</a>
-        <a href="#tinkering" class="nav-link">tinkering</a>
-        <a href="#human" class="nav-link">human</a>
+        <a href="about.html" class="nav-link">about</a>
+        <a href="work.html" class="nav-link">work</a>
+        <a href="human.html" class="nav-link">human</a>
+        <a href="https://blog.sooraj.fun" target="_blank" rel="noopener" class="nav-link">blog ↗</a>
       </nav>
 
       <div class="nav-actions">
@@ -54,12 +54,12 @@
           <h1 class="hero-title">hey, i'm sooraj.</h1>
           <div class="hero-bio">
             <p>
-              i build software, explore quantum things, and tinker with low-level tools. 
-              i'm a bit annoying about details. i notice small glitches, awkward loading states, 
-              and unnecessary complexity that most people just tolerate, and i usually end up rewriting or fixing them.
+              i'm a cs student targeting software engineering, web dev, and ai/ml roles. 
+              i build tools, fullstack apps, and local ai systems that stay snappy and don't break.
             </p>
             <p>
-              i care much more about <strong>why</strong> we're building something than how many layers of abstractions we can pile on top of it.
+              i'm a bit stubborn about details. i notice clunky loading states, bloated dependencies, 
+              and confusing workflows that people just tolerate, and i usually end up rewriting or fixing them.
             </p>
           </div>
 
@@ -71,62 +71,112 @@
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
               </svg>
             </button>
+            <a href="assets/resume.tex" class="resume-btn" download="Sooraj_Resume.tex" title="download ATS LaTeX resume">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              resume.tex (ats)
+            </a>
             <span class="status-badge">
               <span class="nav-status"></span>
-              open for engineering roles
+              open for swe / ai roles
             </span>
           </div>
         </div>
 
-        <!-- Interactive Avatar with Cursor-Tracking & Speech Reaction -->
-        <div class="avatar-wrap">
-          <div class="avatar-canvas-container" title="click to poke">
-            <canvas id="avatar-canvas"></canvas>
+        <!-- Interactive Animated Spiderman Headphone Card -->
+        <div class="spidey-card-wrap">
+          <div id="spidey-card" class="spidey-card" title="click to poke spidey">
+            <img src="assets/spiderman.jpg" alt="Spider-Man wearing headphones listening to lofi">
+            <div id="music-notes-layer" class="music-notes-layer"></div>
           </div>
-          <div id="avatar-bubble" class="speech-bubble">careful, i made that.</div>
+          <div id="avatar-bubble" class="speech-bubble">listening to lofi while shipping.</div>
         </div>
       </div>
     </section>
 
-    <!-- About Snippet -->
-    <section id="about" class="reveal">
-      <div class="section-label">the short story</div>
-      <div class="human-text">
-        <p>
-          i started writing code because i wanted to understand what computers were doing when nobody was watching. 
-          that curiosity usually started with breaking things, followed by hours of reading documentation and assembly outputs to understand why they broke.
-        </p>
-        <p>
-          most of my work lives in systems programming, developer tools, and computer architecture. 
-          if a developer tool takes 40 minutes of debugging configuration files before you can write a single line of code, i consider it a personal insult.
-        </p>
-        <p>
-          i'm happiest in small, fast-moving teams where people care deeply about their craft, debate trade-offs honestly, and don't hide behind corporate jargon. 
-          the thing i'm still learning is when to stop polishing and ship.
-        </p>
-      </div>
-    </section>
+    <!-- Weekend Deploy & Showcase Reminder -->
+    <div class="weekend-callout reveal">
+      <b>weekend deploy queue:</b>
+      <span>shipping live preview instances and demo recordings for spotify-roaster & laya-file-organizer this weekend.</span>
+    </div>
 
-    <!-- Case Studies / Selected Work -->
+    <!-- Featured Projects (Recruiter-Grade) -->
     <section id="work" class="reveal">
-      <div class="section-label">selected work & stories</div>
+      <div class="section-label">featured engineering & web projects</div>
 
-      <!-- Case Study 1: agent-setup -->
+      <!-- Project 1: spotify-roaster -->
       <article class="case-study">
         <div class="case-meta">
-          <span class="case-tag">developer tooling</span>
+          <span class="case-tag">web dev & fullstack ai</span>
           <span>·</span>
-          <span>bash & cross-platform unix</span>
+          <span>next.js · tailwind · spotify oauth · gemini</span>
+          <span>·</span>
+          <span class="badge-pending">pending live deploy · weekend rollout</span>
         </div>
-        <h2 class="case-title">an environment installer that doesn't blow up your machine.</h2>
+        <h2 class="case-title">ai-powered music taste roaster with zero client secret exposure.</h2>
         <div class="case-body">
           <p>
-            every time i set up a fresh linux or mac machine, my terminal broke. 
-            i would easily burn three to four hours debugging PATH exports, broken package managers, and missing permissions instead of writing actual software.
+            most music summary apps are boring stats dashboards. 
+            i built <strong>spotify-roaster</strong> to pull a user's listening history, top genres, and acoustic valence features, then feed it into an llm to generate savage, witty roasts.
           </p>
           <p>
-            existing bootstrap scripts either make wild assumptions (like assuming everyone is on standard ubuntu) or greedily overwrite existing dotfiles without asking.
-            i built <strong>agent-setup</strong> as a single-command orchestrator that inspects what's already installed, stays strictly idempotent, and configures an entire production dev environment in under 40 seconds.
+            spotify's oauth strict redirect requirements meant handling token exchanges purely on the backend. 
+            to prevent sluggish api lag, all profile queries execute concurrently via <code>Promise.all</code>, and dynamic social preview cards are generated on the fly with <code>@vercel/og</code>.
+          </p>
+        </div>
+        <div class="case-punchline">
+          architecture: server-side oauth token exchange, concurrent stats fetching, and rule-based fallback when ai quotas exhaust.
+        </div>
+        <div class="case-links">
+          <a href="https://github.com/whysooraj/spotify-roaster" target="_blank" rel="noopener" class="text-link">view on github ↗</a>
+          <span class="text-link" style="color: var(--dim); border-color: transparent;">live link deploying this weekend</span>
+        </div>
+      </article>
+
+      <!-- Project 2: laya-file-organizer -->
+      <article class="case-study">
+        <div class="case-meta">
+          <span class="case-tag">local-first ai & systems</span>
+          <span>·</span>
+          <span>python · edge classification</span>
+          <span>·</span>
+          <span class="badge-live">v1.0 open source · sub-35ms</span>
+        </div>
+        <h2 class="case-title">sub-35ms local file classifier that doesn't leak your data to the cloud.</h2>
+        <div class="case-body">
+          <p>
+            everyone's downloads folder is a chaotic landfill, but sending personal filenames and file previews to a remote llm API is slow, expensive, and a privacy disaster.
+          </p>
+          <p>
+            i built <strong>laya-file-organizer</strong> using a non-autoregressive decision engine that runs completely locally on your machine. 
+            it categorizes files in under 35 milliseconds, with atomic file moves and rollback protection so nothing ever gets lost.
+          </p>
+        </div>
+        <div class="case-punchline">
+          takeaway: running small models directly on the edge beats cloud api latency every single time.
+        </div>
+        <div class="case-links">
+          <a href="https://github.com/whysooraj/laya-file-organizer" target="_blank" rel="noopener" class="text-link">view on github ↗</a>
+        </div>
+      </article>
+
+      <!-- Project 3: agent-setup -->
+      <article class="case-study">
+        <div class="case-meta">
+          <span class="case-tag">swe & devops tooling</span>
+          <span>·</span>
+          <span>bash · posix shell · unix</span>
+          <span>·</span>
+          <span class="badge-live">v1.0 release</span>
+        </div>
+        <h2 class="case-title">an idempotent developer setup script that doesn't blow up your dotfiles.</h2>
+        <div class="case-body">
+          <p>
+            every time i got a new linux machine or mac, my terminal broke. 
+            i would burn three to four hours debugging PATH exports, broken package managers, and missing tools before writing any code.
+          </p>
+          <p>
+            <strong>agent-setup</strong> is a zero-dependency, single-command orchestrator. 
+            it inspects what's already installed, stays strictly idempotent, and configures an entire developer environment in under 40 seconds without overwriting existing files.
           </p>
         </div>
         <div class="case-punchline">
@@ -137,109 +187,33 @@
         </div>
       </article>
 
-      <!-- Case Study 2: branch-prediction-sim -->
+      <!-- Project 4: Quanevac -->
       <article class="case-study">
         <div class="case-meta">
-          <span class="case-tag">computer architecture</span>
+          <span class="case-tag">algorithms & quantum research</span>
           <span>·</span>
-          <span>interactive simulation</span>
+          <span>python · graph optimization</span>
+          <span>·</span>
+          <span class="badge-pending">research simulator in progress</span>
         </div>
-        <h2 class="case-title">watching modern cpus make wild guesses in real-time.</h2>
+        <h2 class="case-title">quantum evacuation pathfinding without melting memory.</h2>
         <div class="case-body">
           <p>
-            modern processors don't wait for your code to execute before deciding which branch to take. 
-            they make speculative bets on every clock cycle. when they guess right, code is blistering fast. 
-            when they guess wrong, the entire execution pipeline is discarded and the CPU stalls.
+            simulating quantum algorithms on classical hardware is a fast way to turn your laptop into a space heater. 
+            state vectors scale exponentially with every qubit added.
           </p>
           <p>
-            reading state-transition diagrams in a textbook never quite conveyed the physical cost of a mispredict. 
-            so i built an interactive simulator that models 2-bit saturating counters, Branch History Tables (BHT), and Branch Target Buffers (BTB). 
-            you can step through branch histories cycle by cycle and visually see where latency penalties accumulate.
+            while researching emergency evacuation network optimization using quantum search heuristics, most of my time went into matrix dimension bounding and pruning state spaces to keep memory within limits.
           </p>
         </div>
         <div class="case-punchline">
-          lesson: seeing pipeline stalls visually makes hardware trade-offs click in seconds.
+          lesson: theoretical quantum elegance means nothing if classical simulation chokes on memory.
         </div>
         <div class="case-links">
-          <a href="https://github.com/whysooraj" target="_blank" rel="noopener" class="text-link">view simulator on github ↗</a>
+          <a href="https://github.com/whysooraj/Quanevac" target="_blank" rel="noopener" class="text-link">research repo ↗</a>
         </div>
       </article>
 
-      <!-- Case Study 3: quanevac -->
-      <article class="case-study">
-        <div class="case-meta">
-          <span class="case-tag">quantum algorithms</span>
-          <span>·</span>
-          <span>state vector optimization</span>
-        </div>
-        <h2 class="case-title">quantum pathfinding without melting my laptop fans.</h2>
-        <div class="case-body">
-          <p>
-            simulating quantum circuits on classical computers is a quick way to turn your laptop into a noisy space heater. 
-            state vectors scale exponentially: each additional qubit doubles the memory footprint.
-          </p>
-          <p>
-            while researching emergency evacuation optimization using quantum search heuristics, most of my time didn't go into writing equations—it went into pruning state spaces, bounding matrix dimensions, and keeping memory low enough that standard hardware wouldn't crash midway through evaluation.
-          </p>
-        </div>
-        <div class="case-punchline">
-          takeaway: theoretical quantum elegance means nothing if classical simulation chokes on memory.
-        </div>
-        <div class="case-links">
-          <a href="https://github.com/whysooraj/quanevac" target="_blank" rel="noopener" class="text-link">research repo ↗</a>
-        </div>
-      </article>
-
-    </section>
-
-    <!-- Tinkering & Smaller Projects -->
-    <section id="tinkering" class="reveal">
-      <div class="section-label">tinkering & utilities</div>
-      <div class="tinker-list">
-        
-        <a href="https://github.com/whysooraj" target="_blank" rel="noopener" class="tinker-item">
-          <span class="tinker-title">multimodal_fmnn</span>
-          <span class="tinker-desc">multimodal fuzzy min-max neural net for heterogeneous sensor streaming</span>
-          <span class="tinker-year">2026</span>
-        </a>
-
-        <a href="https://github.com/whysooraj/petersons-algorithm" target="_blank" rel="noopener" class="tinker-item">
-          <span class="tinker-title">petersons-algorithm</span>
-          <span class="tinker-desc">demonstrating race conditions, memory barriers, and mutual exclusion</span>
-          <span class="tinker-year">2026</span>
-        </a>
-
-        <a href="https://github.com/whysooraj" target="_blank" rel="noopener" class="tinker-item">
-          <span class="tinker-title">laya-file-organizer</span>
-          <span class="tinker-desc">minimal daemon that stops downloads folders from looking like landfills</span>
-          <span class="tinker-year">2025</span>
-        </a>
-
-        <a href="https://github.com/whysooraj" target="_blank" rel="noopener" class="tinker-item">
-          <span class="tinker-title">snorlax & besynx</span>
-          <span class="tinker-desc">lightweight background workers and automation experiments</span>
-          <span class="tinker-year">2024</span>
-        </a>
-
-      </div>
-    </section>
-
-    <!-- Human / Philosophy -->
-    <section id="human" class="reveal">
-      <div class="section-label">human</div>
-      <div class="human-text">
-        <p>
-          when i'm not in a terminal, i read physics papers, explore history, drink too much south indian filter coffee, 
-          and spend an embarrassing amount of time obsessing over typography, mechanical switches, and clean interfaces.
-        </p>
-        <blockquote class="human-quote">
-          "the best software feels invisible, the best code is the code you never had to write, and good engineering is just empathy made runnable."
-        </blockquote>
-        <p>
-          i believe in boring technology, clear documentation, and making tools that respect the user's attention. 
-          if you want to chat about systems, quantum problems, or an open role, my inbox is always open.
-        </p>
-      </div>
     </section>
 
     <!-- Connect & Footer -->
@@ -253,6 +227,8 @@
             <a href="https://linkedin.com/in/whysooraj" target="_blank" rel="noopener">linkedin</a>
             <span>·</span>
             <a href="mailto:contact@whysooraj.fun">email</a>
+            <span>·</span>
+            <a href="assets/resume.tex" download="Sooraj_Resume.tex">resume.tex</a>
             <span>·</span>
             <a href="llms.txt" target="_blank">llms.txt</a>
           </div>

@@ -1,8 +1,8 @@
 # Sooraj (whysooraj)
 
-> Systems developer, low-level tooling engineer, and quantum computing researcher based in Bengaluru, India. Builds software with high craft, deep attention to detail, and minimal abstractions.
+> CS student targeting Software Engineering, Web Development, and AI/ML roles. Based in Bengaluru, India. Builds tools, fullstack applications, and edge AI systems with high craft, fast response times, and minimal abstractions.
 
-This is a machine-readable plain-text summary of whysooraj.fun for AI agents and scrapers.
+This is a machine-readable plain-text summary of sooraj.fun for AI agents and scrapers.
 
 - Name: Mouli Sai Santhosh Sooraj
 - Handle: whysooraj
@@ -13,29 +13,35 @@ This is a machine-readable plain-text summary of whysooraj.fun for AI agents and
 
 ## Core Technical Profile
 
-- Systems & Low-Level: C, C++, Rust, Bash/POSIX shell, Linux kernel fundamentals, computer organization & architecture.
-- Autonomous Agents & Tooling: Zero-dependency CLI orchestrators, agentic developer workflows, automation engines.
-- Quantum & Algorithms: Quantum search heuristics, QAOA, state-vector simulation, algorithm optimization.
-- Frontend & Craft: Semantic HTML5, CSS3, modern Vanilla JavaScript, Web Audio API, Canvas rendering, accessibility.
+- Web Development & Fullstack: Next.js (App Router), React, TypeScript, Tailwind CSS, Node.js, Express, REST APIs, OAuth 2.0.
+- Systems & Low-Level: C++, Python, Bash/POSIX shell, Linux kernel fundamentals, computer organization & architecture.
+- AI/ML & Tooling: PyTorch, Scikit-Learn, Gemini API, OpenAI API, Local LLMs (Ollama), Edge Inference, Zero-dependency CLI tools.
+- Frontend & Craft: Semantic HTML5, CSS3, modern Vanilla JavaScript, Web Audio API, Canvas rendering, accessibility, 100/100 Lighthouse performance.
 
-## Selected Case Studies
+## Featured Projects
 
-### 1. agent-setup
+### 1. Spotify Roaster (Web Dev & AI)
+- Repository: https://github.com/whysooraj/spotify-roaster
+- Status: Live deployment in progress (weekend rollout)
+- Description: AI-powered music roaster built with Next.js and Tailwind CSS.
+- Tech & Architecture: Server-side Spotify OAuth token exchange (zero client secret leaks), concurrent querying with Promise.all, dynamic @vercel/og social cards, offline rule-based fallback.
+
+### 2. Laya File Organizer (Edge AI & Systems)
+- Repository: https://github.com/whysooraj/laya-file-organizer
+- Status: v1.0 Open Source
+- Description: Sub-35ms local file classifier and desktop organizer using non-autoregressive decision heuristics.
+- Core Feature: 100% offline edge inference, zero cloud telemetry, safe-move atomic file transactions.
+
+### 3. Agent Setup (SWE & DevOps)
 - Repository: https://github.com/whysooraj/agent-setup
-- Description: Deterministic, idempotent environment installer and CLI bootstrapped for Linux and macOS.
-- Core Problem: Developers losing hours debugging environment inconsistencies and corrupted dotfiles on fresh installs.
-- Solution: Pre-flight environment probing, strict idempotency, safe atomic link creation, zero-dependency bash architecture.
+- Status: v1.0 Release
+- Description: Deterministic, idempotent developer environment bootstrap CLI for Linux and macOS. Configures full stacks in under 40 seconds without overwriting user dotfiles.
 
-### 2. branch-prediction-sim
-- Repository: https://github.com/whysooraj
-- Description: Interactive hardware architectural simulator modeling speculative CPU execution.
-- Features: 2-bit saturating counters, Branch History Table (BHT), Branch Target Buffer (BTB), cycle-accurate stall accumulation.
-
-### 3. quanevac
-- Repository: https://github.com/whysooraj/quanevac
-- Description: Quantum evacuation and pathfinding simulation engine.
-- Constraints: Classical memory limits during state-vector expansion; state space pruning and matrix bounding.
+### 4. Quanevac (Quantum Research & Algorithms)
+- Repository: https://github.com/whysooraj/Quanevac
+- Status: Research Simulator
+- Description: Evacuation routing using quantum search heuristics. Bounding matrix dimensions and pruning exponential state-vector growth on classical hardware.
 
 ## Open To
 
-Full-time engineering roles, research internships, or high-agency founding engineer opportunities at fast-moving teams focused on systems, developer tooling, or low-level infrastructure.
+Software Engineering, Web Development, and AI/ML internships or full-time roles at fast-moving engineering teams.

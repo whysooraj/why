@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>about · sooraj</title>
+  <meta name="description" content="about sooraj. cs student, builder, and tinkerer in bengaluru.">
+  <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="nav-wrap">
+    <div class="nav">
+      <a href="index.html" class="nav-mark" aria-label="whysooraj home">
+        whysooraj.
+        <span class="nav-status"></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="about.html" class="nav-link active">about</a>
+        <a href="work.html" class="nav-link">work</a>
+        <a href="human.html" class="nav-link">human</a>
+        <a href="https://blog.sooraj.fun" target="_blank" rel="noopener" class="nav-link">blog ↗</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="icon-btn" aria-label="toggle sound"><span id="sound-icon"></span></button>
+        <button id="theme-toggle" class="icon-btn" aria-label="toggle theme">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="reveal" style="padding-top: 55px;">
+      <h1 class="hero-title">the longer story.</h1>
+      
+      <div class="human-text" style="margin-top: 24px;">
+        <p>
+          i'm a computer science student at SRM University-AP, currently based in Bengaluru. 
+          i'm targeting software engineering, web development, and AI/ML roles where people value clarity, speed, and software that actually feels good to use.
+        </p>
+
+        <p>
+          i got into programming the messy way: trying to customize things, breaking my desktop environment, and spending weekends reading man pages and stack traces to understand why my shell wouldn't start. 
+          that curiosity evolved into a deep appreciation for systems that respect the user and don't waste their time.
+        </p>
+
+        <p>
+          i care about the entire stack: from frontend responsiveness and thoughtful micro-interactions, up to backend concurrency, API latency, and edge AI deployment. 
+          if a developer tool takes 40 minutes of debugging configuration files before you can write a line of code, i consider it a personal insult.
+        </p>
+
+        <blockquote class="human-quote">
+          "boring technology, predictable behavior, and fast feedback loops beat clever abstractions every single time."
+        </blockquote>
+
+        <p>
+          outside of coursework and projects, i write long-form engineering essays on <a href="https://blog.sooraj.fun" target="_blank" rel="noopener" style="text-decoration: underline;">blog.sooraj.fun</a>, listen to too much lofi hip-hop, and drink strong South Indian filter coffee.
+        </p>
+
+        <div class="reach-row" style="margin-top: 40px;">
+          <a href="mailto:contact@whysooraj.fun" class="reach-mail">contact@whysooraj.fun</a>
+          <a href="assets/resume.tex" class="resume-btn" download="Sooraj_Resume.tex">download resume.tex (ats)</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div id="footer-greeting" class="footer-greeting">talk soon :)</div>
+        <div id="ist-time" class="footer-time">bengaluru · loading...</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="sound.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

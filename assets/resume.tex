@@ -1,0 +1,152 @@
+%-------------------------
+% ATS-Friendly Resume in LaTeX
+% Standard single-column, parseable by Workday, Greenhouse, Lever, Ashby
+% Formula: Google X-Y-Z (Accomplished [X] as measured by [Y] by doing [Z])
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{geometry}
+
+\geometry{left=0.6in, top=0.55in, right=0.6in, bottom=0.55in}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% URL style
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting - ATS standard uppercase with underline rule
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.98\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, label=\textbullet]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Mouli Sai Santhosh Sooraj} \\ \vspace{4pt}
+    \small Bengaluru, India $|$ +91-XXXXXXXXXX $|$ \href{mailto:contact@whysooraj.fun}{\underline{contact@whysooraj.fun}} \\ \vspace{2pt}
+    \href{https://sooraj.fun}{\underline{sooraj.fun}} $|$ 
+    \href{https://github.com/whysooraj}{\underline{github.com/whysooraj}} $|$ 
+    \href{https://linkedin.com/in/whysooraj}{\underline{linkedin.com/in/whysooraj}}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {SRM University-AP}{Andhra Pradesh, India}
+      {Bachelor of Technology in Computer Science and Engineering}{Expected 2027}
+      \resumeItemListStart
+        \resumeItem{Coursework: Data Structures \& Algorithms, Computer Systems Architecture, Operating Systems, Database Management Systems, Machine Learning.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, TypeScript, JavaScript, C++, Bash/POSIX Shell, SQL} \\
+     \textbf{Web \& Frameworks}{: Next.js (App Router), React, Tailwind CSS, Node.js, Express, FastAPI, REST APIs} \\
+     \textbf{Systems \& Infrastructure}{: Linux Kernel Basics, Git, Docker, Web Audio API, Microservices, CI/CD} \\
+     \textbf{AI/ML \& Tools}{: PyTorch, Scikit-Learn, Gemini API, OpenAI API, Local LLMs (Ollama), Vector Embeddings}
+    }}
+ \end{itemize}
+
+%-----------PROJECTS-----------
+\section{Featured Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\textbf{Spotify Roaster} $|$ \emph{Next.js, Tailwind CSS, Spotify Web API, Gemini AI, OAuth 2.0}}{Oct 2026}
+          \resumeItemListStart
+            \resumeItem{Architected a fullstack web application analyzing user listening habits via Spotify OAuth backend token exchange, ensuring zero client-side secret exposure.}
+            \resumeItem{Implemented concurrent API fetching using \texttt{Promise.all} across tracks, artists, and audio features, reducing data ingestion latency to under 350ms.}
+            \resumeItem{Built automated AI roast generation pipeline paired with dynamic Social Card preview generation using Next.js \texttt{@vercel/og} for seamless viral sharing.}
+            \resumeItem{Engineered local JSON cache persistence layer with rule-based fallback to guarantee 100\% uptime during external LLM quota limits.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Laya File Organizer} $|$ \emph{Python, Machine Learning, Systems, Local-First AI}}{Oct 2026}
+          \resumeItemListStart
+            \resumeItem{Engineered a sub-35ms local file classifier and desktop organizer using non-autoregressive decision heuristics to categorize chaotic directory downloads.}
+            \resumeItem{Eliminated cloud API dependencies and network latency, achieving 100\% offline data privacy and sub-second batch sorting throughput.}
+            \resumeItem{Built robust cross-platform path resolution and safe-move file system semantics with rollback protection to prevent accidental file corruption.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Agent Setup CLI} $|$ \emph{Bash, POSIX Shell, Linux, DevOps, Systems Automation}}{Oct 2026}
+          \resumeItemListStart
+            \resumeItem{Created a zero-dependency, idempotent developer environment bootstrap CLI reducing fresh machine configuration time from 4 hours to under 40 seconds.}
+            \resumeItem{Implemented non-destructive pre-flight environment probing that verifies existing toolchains before link creation, eliminating corrupted dotfile states.}
+            \resumeItem{Engineered automated cross-platform compatibility layers supporting Ubuntu, Debian, macOS, and Arch Linux package managers.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Quanevac} $|$ \emph{Python, Quantum Algorithms, Graph Optimization, Simulation}}{Sep 2026}
+          \resumeItemListStart
+            \resumeItem{Researched and modeled evacuation pathfinding networks leveraging quantum heuristic state search and QAOA routing principles.}
+            \resumeItem{Optimized classical simulation bottlenecks by bounding matrix dimensions and pruning exponential state-vector growth to prevent memory overflow.}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE / LEADERSHIP-----------
+\section{Leadership \& Community}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Open Source Contributor \& Technical Writer}{Bengaluru, India}
+      {Independent Developer}{2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{Author technical deep-dives on systems architecture, browser internals, and quantum computing on \href{https://sooraj.fun}{\underline{sooraj.fun}} and \href{https://blog.sooraj.fun}{\underline{blog.sooraj.fun}}.}
+        \resumeItem{Maintained open-source automation utilities and developer tools with over 20+ public repositories on GitHub.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\end{document}
