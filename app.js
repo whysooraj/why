@@ -18,12 +18,16 @@
 
   if (themeBtn) {
     themeBtn.addEventListener('click', (e) => {
-      if (window.sound) window.sound.play('toggle', { up: !html.classList.contains('dark') });
+      const willBeDark = !html.classList.contains('dark');
+      if (window.sound) window.sound.play('toggle', { up: willBeDark });
 
       const toggle = () => {
         html.classList.toggle('dark');
         const isDark = html.classList.contains('dark');
         localStorage.setItem('why_theme', isDark ? 'dark' : 'light');
+        if (window.avatar && window.avatar.onThemeChange) {
+          window.avatar.onThemeChange(isDark);
+        }
       };
 
       if (!document.startViewTransition) {

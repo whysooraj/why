@@ -352,6 +352,50 @@
     }
   }
 
+  // Funny jokes when switching themes
+  const darkJokes = [
+    'stealth suit engaged.',
+    'ah, my retinas thank you.',
+    'symbiote mode... minus the drama.',
+    'turning off lights to save on the electric bill.',
+    'night patrol. time to hunt bugs.'
+  ];
+
+  const lightJokes = [
+    'flashbang! my retinas!',
+    'who turned on the sun? i was coding.',
+    'day patrol begins. someone get me sunscreen.',
+    'ah, daylight mode. maximum visibility.',
+    'my spidey lenses were not calibrated for this much photon.'
+  ];
+
+  let darkJokeIdx = 0;
+  let lightJokeIdx = 0;
+
+  function onThemeChange(isDark) {
+    pokeTime = performance.now();
+    isWinking = true;
+    setTimeout(() => {
+      isWinking = false;
+    }, 450);
+
+    spawnNote();
+
+    const joke = isDark
+      ? darkJokes[darkJokeIdx++ % darkJokes.length]
+      : lightJokes[lightJokeIdx++ % lightJokes.length];
+
+    if (bubble) {
+      bubble.textContent = joke;
+      bubble.classList.add('visible');
+
+      clearTimeout(bubbleTimeout);
+      bubbleTimeout = setTimeout(() => {
+        bubble.classList.remove('visible');
+      }, 2800);
+    }
+  }
+
   container.addEventListener('click', poke);
-  window.avatar = { poke };
+  window.avatar = { poke, onThemeChange };
 })();
