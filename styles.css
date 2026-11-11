@@ -9,7 +9,6 @@
   --card-bg: #ffffff;
   --hover-bg: #f4f4f2;
   --accent: #22c55e;
-  --accent-spidey: #e11d48;
   --tag-bg: #f3f3f0;
   
   --serif: 'Instrument Serif', Georgia, serif;
@@ -32,7 +31,6 @@ html.dark {
   --card-bg: #141414;
   --hover-bg: #1a1a1a;
   --accent: #4ade80;
-  --accent-spidey: #fb7185;
   --tag-bg: #181818;
 }
 
@@ -91,7 +89,6 @@ button {
   position: relative;
 }
 
-/* Subtle hairline margin guide lines */
 .container::before,
 .container::after {
   content: '';
@@ -216,7 +213,7 @@ button {
   stroke-linejoin: round;
 }
 
-/* Sections & Breathing Room */
+/* Sections & Spacing */
 section {
   padding: 65px 0 25px;
 }
@@ -279,8 +276,7 @@ h1.hero-title {
   }
   .hero-header {
     flex-direction: column-reverse;
-    align-items: center;
-    text-align: left;
+    align-items: flex-start;
   }
 }
 
@@ -288,7 +284,7 @@ h1.hero-title {
   font-size: 16.5px;
   color: var(--fg-muted);
   line-height: 1.68;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   max-width: 530px;
 }
 
@@ -296,9 +292,84 @@ h1.hero-title {
   margin-top: 14px;
 }
 
-.hero-bio strong {
+/* Hero Actions & Status Alignment */
+.hero-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.reach-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.reach-mail {
+  font-family: var(--serif);
+  font-size: 26px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.reach-mail:hover {
+  border-color: var(--fg);
   color: var(--fg);
-  font-weight: 500;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--fg-muted);
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  color: var(--fg);
+  background: var(--hover-bg);
+  border-color: var(--fg-muted);
+}
+
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--fg);
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  transition: all 0.2s ease;
+}
+
+.resume-btn:hover {
+  border-color: var(--fg);
+  background: var(--hover-bg);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--fg-muted);
+  padding: 3px 10px;
+  background: var(--tag-bg);
+  border-radius: 99px;
+  border: 1px solid var(--border-subtle);
+  align-self: flex-start;
 }
 
 /* Spiderman Headphone Comic Card */
@@ -409,94 +480,6 @@ h1.hero-title {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Reach & Actions Row */
-.reach-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 26px;
-}
-
-.reach-mail {
-  font-family: var(--serif);
-  font-size: 26px;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 2px;
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.reach-mail:hover {
-  border-color: var(--fg);
-  color: var(--fg);
-}
-
-.copy-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  color: var(--fg-muted);
-  transition: all 0.2s ease;
-}
-
-.copy-btn:hover {
-  color: var(--fg);
-  background: var(--hover-bg);
-  border-color: var(--fg-muted);
-}
-
-.resume-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--fg);
-  padding: 6px 14px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--card-bg);
-  transition: all 0.2s ease;
-}
-
-.resume-btn:hover {
-  border-color: var(--fg);
-  background: var(--hover-bg);
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--mono);
-  font-size: 11.5px;
-  color: var(--fg-muted);
-  padding: 4px 10px;
-  background: var(--tag-bg);
-  border-radius: 99px;
-  border: 1px solid var(--border-subtle);
-  margin-left: auto;
-}
-
-@media (max-width: 650px) {
-  .status-badge {
-    margin-left: 0;
-    width: 100%;
-  }
-}
-
-/* Subtle separator rule */
-.hairline {
-  height: 1px;
-  background: var(--border);
-  margin: 20px 0;
-  border: none;
-}
-
 /* Case Studies (Story format) */
 .case-study {
   padding: 34px 0;
@@ -562,6 +545,10 @@ html.dark .badge-live {
   letter-spacing: -0.01em;
 }
 
+.case-title a:hover {
+  text-decoration: underline;
+}
+
 .case-body {
   color: var(--fg-muted);
   font-size: 15px;
@@ -604,6 +591,74 @@ html.dark .badge-live {
   border-color: var(--fg);
 }
 
+.text-link.primary {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+/* Warm Hug Followup Section */
+.warm-hug {
+  padding: 50px 0 20px;
+}
+
+.warm-hug-card {
+  padding: 32px 30px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+}
+
+.warm-hug-lead {
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.25;
+  color: var(--fg);
+  margin-bottom: 14px;
+}
+
+.warm-hug-body {
+  font-size: 15.5px;
+  color: var(--fg-muted);
+  line-height: 1.7;
+}
+
+.warm-hug-body + .warm-hug-body {
+  margin-top: 10px;
+}
+
+.warm-hug-signoff {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.handwritten-note {
+  font-family: var(--hand);
+  font-size: 18px;
+  color: var(--fg);
+}
+
+.warm-hug-mail {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--fg);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-bottom: 1px solid var(--fg);
+  transition: opacity 0.2s ease;
+}
+
+.warm-hug-mail:hover {
+  opacity: 0.7;
+}
+
 /* Deploy Reminder Callout */
 .weekend-callout {
   margin: 32px 0 10px;
@@ -624,6 +679,74 @@ html.dark .badge-live {
   text-transform: uppercase;
   color: var(--fg);
   letter-spacing: 0.05em;
+}
+
+/* Dedicated Project Page Styles */
+.crumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 24px;
+}
+
+.crumb-bar a:hover {
+  color: var(--fg);
+}
+
+.project-hero-title {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.18;
+  margin-bottom: 16px;
+  color: var(--fg);
+}
+
+.project-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 28px 0 36px;
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--tag-bg);
+  border: 1px solid var(--border-subtle);
+}
+
+.stat-item b {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.stat-item span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.project-section-heading {
+  font-family: var(--serif);
+  font-size: 24px;
+  margin: 36px 0 12px;
+  color: var(--fg);
+}
+
+.project-text {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--fg-muted);
+}
+
+.project-text p + p {
+  margin-top: 14px;
 }
 
 /* Human / Quirks section */
@@ -674,9 +797,9 @@ html.dark .badge-live {
 
 /* Footer */
 footer {
-  padding: 70px 0 50px;
+  padding: 60px 0 45px;
   border-top: 1px solid var(--border);
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 .footer-inner {

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>agent-setup · sooraj</title>
+  <meta name="description" content="case study: a setup script that doesn't ruin your entire machine by sooraj.">
+  <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="nav-wrap">
+    <div class="nav">
+      <a href="index.html" class="nav-mark" aria-label="whysooraj home">
+        whysooraj.
+        <span class="nav-status"></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="about.html" class="nav-link">about</a>
+        <a href="work.html" class="nav-link active">work</a>
+        <a href="human.html" class="nav-link">human</a>
+        <a href="https://blog.sooraj.fun" target="_blank" rel="noopener" class="nav-link">blog ↗</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="icon-btn" aria-label="toggle sound"><span id="sound-icon"></span></button>
+        <button id="theme-toggle" class="icon-btn" aria-label="toggle theme">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="reveal" style="padding-top: 50px;">
+      
+      <div class="crumb-bar">
+        <a href="index.html">home</a>
+        <span>/</span>
+        <a href="work.html">work</a>
+        <span>/</span>
+        <span>agent-setup</span>
+      </div>
+
+      <h1 class="project-hero-title">a setup script that doesn't ruin your entire machine.</h1>
+
+      <div class="project-stats-grid">
+        <div class="stat-item">
+          <b>role</b>
+          <span>creator & maintainer</span>
+        </div>
+        <div class="stat-item">
+          <b>stack</b>
+          <span>posix bash · unix</span>
+        </div>
+        <div class="stat-item">
+          <b>bootstrap time</b>
+          <span>&lt; 40 seconds</span>
+        </div>
+        <div class="stat-item">
+          <b>status</b>
+          <span style="color: var(--accent);">v1.0 release</span>
+        </div>
+      </div>
+
+      <div class="project-text">
+        <p>
+          setting up a new laptop or cloud instance is one of the most frustrating experiences in software. 
+          you spend half a day remembering which packages were installed via <code>brew</code>, which came from <code>apt</code>, why your <code>zshrc</code> has missing aliases, and why your SSH agent isn't talking to GitHub.
+        </p>
+
+        <p>
+          most public dotfile scripts make two fatal mistakes:
+          1. they assume you're on standard Ubuntu and choke when run on macOS or Arch.
+          2. they blindly run <code>cp</code> or <code>ln -sf</code>, quietly overwriting custom configurations you wrote three months ago.
+        </p>
+
+        <h2 class="project-section-heading">the rules of agent-setup</h2>
+        <p>
+          <strong>1. Strict Idempotency:</strong> you can run <code>agent-setup</code> once or fifty times in a row. if a tool or link is already correctly configured, it leaves it alone.
+        </p>
+        <p>
+          <strong>2. Pre-flight Environment Inspection:</strong> before creating a symlink or triggering an install, the script verifies the platform, detects existing package managers, and checks write permissions.
+        </p>
+        <p>
+          <strong>3. Zero Third-Party Dependencies:</strong> pure POSIX-compliant Bash. no Python dependencies, no Node runtime requirements, no Docker bootstrap needed just to run the installer.
+        </p>
+
+        <h2 class="project-section-heading">links & source</h2>
+        <div class="case-links" style="margin-top: 14px;">
+          <a href="https://github.com/whysooraj/agent-setup" target="_blank" rel="noopener" class="text-link primary">view on github ↗</a>
+        </div>
+      </div>
+
+    </article>
+
+    <footer>
+      <div class="footer-inner">
+        <div id="footer-greeting" class="footer-greeting">talk soon :)</div>
+        <div id="ist-time" class="footer-time">bengaluru · loading...</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="sound.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
