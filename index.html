@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>sooraj · systems, tools & craft</title>
+  <meta name="description" content="sooraj (whysooraj). systems, tools, and craft in bengaluru. builds software that feels good and doesn't break.">
+  <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
+  
+  <!-- Fonts: Instrument Serif + Geist + Architects Daughter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="alternate" type="text/markdown" href="llms.txt" title="sooraj, as plain text">
+</head>
+<body>
+
+  <!-- Sticky Minimal Navigation -->
+  <header class="nav-wrap">
+    <div class="nav">
+      <a href="#" class="nav-mark" aria-label="whysooraj home">
+        whysooraj.
+        <span class="nav-status" title="building in bengaluru"></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#about" class="nav-link">about</a>
+        <a href="#work" class="nav-link">work</a>
+        <a href="#tinkering" class="nav-link">tinkering</a>
+        <a href="#human" class="nav-link">human</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="icon-btn" aria-label="toggle sound" title="toggle subtle sound">
+          <span id="sound-icon">
+            <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+          </span>
+        </button>
+        <button id="theme-toggle" class="icon-btn" aria-label="toggle theme" title="toggle dark/light">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Section -->
+    <section class="hero reveal">
+      <div class="hero-header">
+        <div class="hero-intro">
+          <h1 class="hero-title">hey, i'm sooraj.</h1>
+          <div class="hero-bio">
+            <p>
+              i build software, explore quantum things, and tinker with low-level tools. 
+              i'm a bit annoying about details. i notice small glitches, awkward loading states, 
+              and unnecessary complexity that most people just tolerate, and i usually end up rewriting or fixing them.
+            </p>
+            <p>
+              i care much more about <strong>why</strong> we're building something than how many layers of abstractions we can pile on top of it.
+            </p>
+          </div>
+
+          <div class="reach-row">
+            <a href="mailto:contact@whysooraj.fun" class="reach-mail">contact@whysooraj.fun</a>
+            <button class="copy-btn" data-copy-email="contact@whysooraj.fun" aria-label="copy email address" title="click to copy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+            <span class="status-badge">
+              <span class="nav-status"></span>
+              open for engineering roles
+            </span>
+          </div>
+        </div>
+
+        <!-- Interactive Avatar with Cursor-Tracking & Speech Reaction -->
+        <div class="avatar-wrap">
+          <div class="avatar-canvas-container" title="click to poke">
+            <canvas id="avatar-canvas"></canvas>
+          </div>
+          <div id="avatar-bubble" class="speech-bubble">careful, i made that.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Snippet -->
+    <section id="about" class="reveal">
+      <div class="section-label">the short story</div>
+      <div class="human-text">
+        <p>
+          i started writing code because i wanted to understand what computers were doing when nobody was watching. 
+          that curiosity usually started with breaking things, followed by hours of reading documentation and assembly outputs to understand why they broke.
+        </p>
+        <p>
+          most of my work lives in systems programming, developer tools, and computer architecture. 
+          if a developer tool takes 40 minutes of debugging configuration files before you can write a single line of code, i consider it a personal insult.
+        </p>
+        <p>
+          i'm happiest in small, fast-moving teams where people care deeply about their craft, debate trade-offs honestly, and don't hide behind corporate jargon. 
+          the thing i'm still learning is when to stop polishing and ship.
+        </p>
+      </div>
+    </section>
+
+    <!-- Case Studies / Selected Work -->
+    <section id="work" class="reveal">
+      <div class="section-label">selected work & stories</div>
+
+      <!-- Case Study 1: agent-setup -->
+      <article class="case-study">
+        <div class="case-meta">
+          <span class="case-tag">developer tooling</span>
+          <span>·</span>
+          <span>bash & cross-platform unix</span>
+        </div>
+        <h2 class="case-title">an environment installer that doesn't blow up your machine.</h2>
+        <div class="case-body">
+          <p>
+            every time i set up a fresh linux or mac machine, my terminal broke. 
+            i would easily burn three to four hours debugging PATH exports, broken package managers, and missing permissions instead of writing actual software.
+          </p>
+          <p>
+            existing bootstrap scripts either make wild assumptions (like assuming everyone is on standard ubuntu) or greedily overwrite existing dotfiles without asking.
+            i built <strong>agent-setup</strong> as a single-command orchestrator that inspects what's already installed, stays strictly idempotent, and configures an entire production dev environment in under 40 seconds.
+          </p>
+        </div>
+        <div class="case-punchline">
+          rule: never clobber existing configs, and exit with useful errors instead of silent failures.
+        </div>
+        <div class="case-links">
+          <a href="https://github.com/whysooraj/agent-setup" target="_blank" rel="noopener" class="text-link">view on github ↗</a>
+        </div>
+      </article>
+
+      <!-- Case Study 2: branch-prediction-sim -->
+      <article class="case-study">
+        <div class="case-meta">
+          <span class="case-tag">computer architecture</span>
+          <span>·</span>
+          <span>interactive simulation</span>
+        </div>
+        <h2 class="case-title">watching modern cpus make wild guesses in real-time.</h2>
+        <div class="case-body">
+          <p>
+            modern processors don't wait for your code to execute before deciding which branch to take. 
+            they make speculative bets on every clock cycle. when they guess right, code is blistering fast. 
+            when they guess wrong, the entire execution pipeline is discarded and the CPU stalls.
+          </p>
+          <p>
+            reading state-transition diagrams in a textbook never quite conveyed the physical cost of a mispredict. 
+            so i built an interactive simulator that models 2-bit saturating counters, Branch History Tables (BHT), and Branch Target Buffers (BTB). 
+            you can step through branch histories cycle by cycle and visually see where latency penalties accumulate.
+          </p>
+        </div>
+        <div class="case-punchline">
+          lesson: seeing pipeline stalls visually makes hardware trade-offs click in seconds.
+        </div>
+        <div class="case-links">
+          <a href="https://github.com/whysooraj" target="_blank" rel="noopener" class="text-link">view simulator on github ↗</a>
+        </div>
+      </article>
+
+      <!-- Case Study 3: quanevac -->
+      <article class="case-study">
+        <div class="case-meta">
+          <span class="case-tag">quantum algorithms</span>
+          <span>·</span>
+          <span>state vector optimization</span>
+        </div>
+        <h2 class="case-title">quantum pathfinding without melting my laptop fans.</h2>
+        <div class="case-body">
+          <p>
+            simulating quantum circuits on classical computers is a quick way to turn your laptop into a noisy space heater. 
+            state vectors scale exponentially: each additional qubit doubles the memory footprint.
+          </p>
+          <p>
+            while researching emergency evacuation optimization using quantum search heuristics, most of my time didn't go into writing equations—it went into pruning state spaces, bounding matrix dimensions, and keeping memory low enough that standard hardware wouldn't crash midway through evaluation.
+          </p>
+        </div>
+        <div class="case-punchline">
+          takeaway: theoretical quantum elegance means nothing if classical simulation chokes on memory.
+        </div>
+        <div class="case-links">
+          <a href="https://github.com/whysooraj/quanevac" target="_blank" rel="noopener" class="text-link">research repo ↗</a>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Tinkering & Smaller Projects -->
+    <section id="tinkering" class="reveal">
+      <div class="section-label">tinkering & utilities</div>
+      <div class="tinker-list">
+        
+        <a href="https://github.com/whysooraj" target="_blank" rel="noopener" class="tinker-item">
+          <span class="tinker-title">multimodal_fmnn</span>
+          <span class="tinker-desc">multimodal fuzzy min-max neural net for heterogeneous sensor streaming</span>
+          <span class="tinker-year">2026</span>
+        </a>
+
+        <a href="https://github.com/whysooraj/petersons-algorithm" target="_blank" rel="noopener" class="tinker-item">
+          <span class="tinker-title">petersons-algorithm</span>
+          <span class="tinker-desc">demonstrating race conditions, memory barriers, and mutual exclusion</span>
+          <span class="tinker-year">2026</span>
+        </a>
+
+        <a href="https://github.com/whysooraj" target="_blank" rel="noopener" class="tinker-item">
+          <span class="tinker-title">laya-file-organizer</span>
+          <span class="tinker-desc">minimal daemon that stops downloads folders from looking like landfills</span>
+          <span class="tinker-year">2025</span>
+        </a>
+
+        <a href="https://github.com/whysooraj" target="_blank" rel="noopener" class="tinker-item">
+          <span class="tinker-title">snorlax & besynx</span>
+          <span class="tinker-desc">lightweight background workers and automation experiments</span>
+          <span class="tinker-year">2024</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Human / Philosophy -->
+    <section id="human" class="reveal">
+      <div class="section-label">human</div>
+      <div class="human-text">
+        <p>
+          when i'm not in a terminal, i read physics papers, explore history, drink too much south indian filter coffee, 
+          and spend an embarrassing amount of time obsessing over typography, mechanical switches, and clean interfaces.
+        </p>
+        <blockquote class="human-quote">
+          "the best software feels invisible, the best code is the code you never had to write, and good engineering is just empathy made runnable."
+        </blockquote>
+        <p>
+          i believe in boring technology, clear documentation, and making tools that respect the user's attention. 
+          if you want to chat about systems, quantum problems, or an open role, my inbox is always open.
+        </p>
+      </div>
+    </section>
+
+    <!-- Connect & Footer -->
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <div id="footer-greeting" class="footer-greeting">talk soon :)</div>
+          <div class="footer-colophon">
+            <a href="https://github.com/whysooraj" target="_blank" rel="noopener">github</a>
+            <span>·</span>
+            <a href="https://linkedin.com/in/whysooraj" target="_blank" rel="noopener">linkedin</a>
+            <span>·</span>
+            <a href="mailto:contact@whysooraj.fun">email</a>
+            <span>·</span>
+            <a href="llms.txt" target="_blank">llms.txt</a>
+          </div>
+        </div>
+
+        <div id="ist-time" class="footer-time">
+          bengaluru · loading time...
+        </div>
+      </div>
+      <div class="hairline" style="margin-top: 32px; margin-bottom: 20px;"></div>
+      <p style="font-family: var(--mono); font-size: 11px; color: var(--dim); text-align: center;">
+        built from scratch with pure html, css & js · zero frameworks were harmed.
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Interactive Scripts -->
+  <script src="sound.js"></script>
+  <script src="avatar.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

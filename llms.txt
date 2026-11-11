@@ -1,0 +1,41 @@
+# Sooraj (whysooraj)
+
+> Systems developer, low-level tooling engineer, and quantum computing researcher based in Bengaluru, India. Builds software with high craft, deep attention to detail, and minimal abstractions.
+
+This is a machine-readable plain-text summary of whysooraj.fun for AI agents and scrapers.
+
+- Name: Mouli Sai Santhosh Sooraj
+- Handle: whysooraj
+- Email: contact@whysooraj.fun
+- GitHub: https://github.com/whysooraj
+- LinkedIn: https://linkedin.com/in/whysooraj
+- Location: Bengaluru, India (IST / UTC+5:30)
+
+## Core Technical Profile
+
+- Systems & Low-Level: C, C++, Rust, Bash/POSIX shell, Linux kernel fundamentals, computer organization & architecture.
+- Autonomous Agents & Tooling: Zero-dependency CLI orchestrators, agentic developer workflows, automation engines.
+- Quantum & Algorithms: Quantum search heuristics, QAOA, state-vector simulation, algorithm optimization.
+- Frontend & Craft: Semantic HTML5, CSS3, modern Vanilla JavaScript, Web Audio API, Canvas rendering, accessibility.
+
+## Selected Case Studies
+
+### 1. agent-setup
+- Repository: https://github.com/whysooraj/agent-setup
+- Description: Deterministic, idempotent environment installer and CLI bootstrapped for Linux and macOS.
+- Core Problem: Developers losing hours debugging environment inconsistencies and corrupted dotfiles on fresh installs.
+- Solution: Pre-flight environment probing, strict idempotency, safe atomic link creation, zero-dependency bash architecture.
+
+### 2. branch-prediction-sim
+- Repository: https://github.com/whysooraj
+- Description: Interactive hardware architectural simulator modeling speculative CPU execution.
+- Features: 2-bit saturating counters, Branch History Table (BHT), Branch Target Buffer (BTB), cycle-accurate stall accumulation.
+
+### 3. quanevac
+- Repository: https://github.com/whysooraj/quanevac
+- Description: Quantum evacuation and pathfinding simulation engine.
+- Constraints: Classical memory limits during state-vector expansion; state space pruning and matrix bounding.
+
+## Open To
+
+Full-time engineering roles, research internships, or high-agency founding engineer opportunities at fast-moving teams focused on systems, developer tooling, or low-level infrastructure.
