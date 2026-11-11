@@ -133,7 +133,7 @@
   copyBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const email = btn.getAttribute('data-copy-email') || 'contact@whysooraj.fun';
+      const email = btn.getAttribute('data-copy-email') || 'whysooraj.official@gmail.com';
       navigator.clipboard.writeText(email).then(() => {
         if (window.sound) window.sound.play('copy');
         if (window.avatar) window.avatar.poke();
