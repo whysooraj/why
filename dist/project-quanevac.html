@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>quanevac · sooraj</title>
+  <meta name="description" content="case study: quantum pathfinding without setting your laptop on fire by sooraj.">
+  <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=vizag">
+</head>
+<body>
+
+  <header class="nav-wrap">
+    <div class="nav">
+      <a href="index.html" class="nav-mark" aria-label="whysooraj home">
+        whysooraj.
+        <span class="nav-status"></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="about.html" class="nav-link">about</a>
+        <a href="work.html" class="nav-link active">work</a>
+        <a href="human.html" class="nav-link">human</a>
+        <a href="https://blog.sooraj.fun" target="_blank" rel="noopener" class="nav-link">blog ↗</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="icon-btn" aria-label="toggle sound"><span id="sound-icon"></span></button>
+        <button id="theme-toggle" class="icon-btn" aria-label="toggle theme">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="reveal" style="padding-top: 50px;">
+      
+      <div class="crumb-bar">
+        <a href="index.html">home</a>
+        <span>/</span>
+        <a href="work.html">work</a>
+        <span>/</span>
+        <span>quanevac</span>
+      </div>
+
+      <h1 class="project-hero-title">quantum pathfinding without setting your laptop on fire.</h1>
+
+      <div class="project-stats-grid">
+        <div class="stat-item">
+          <b>role</b>
+          <span>algorithm research</span>
+        </div>
+        <div class="stat-item">
+          <b>stack</b>
+          <span>python · qiskit · graph heuristics</span>
+        </div>
+        <div class="stat-item">
+          <b>domain</b>
+          <span>evacuation networks</span>
+        </div>
+        <div class="stat-item">
+          <b>status</b>
+          <span style="color: var(--dim);">simulator in progress</span>
+        </div>
+      </div>
+
+      <div class="project-text">
+        <p>
+          in natural disasters or high-density facility emergencies, pathfinding algorithms face severe bottlenecks: road capacities dynamically collapse, human bottlenecks form rapidly, and traditional Dijkstra / A* graphs scale quadratically under real-time re-routing.
+        </p>
+
+        <p>
+          quantum heuristic search and QAOA (Quantum Approximate Optimization Algorithm) offer exciting theoretical bounds for combinatorial graph problems. 
+          the catch? real quantum computers are noisy, and simulating them on standard classical computers means your state vector doubles in memory with every single qubit you add ($2^N$ complex amplitudes).
+        </p>
+
+        <h2 class="project-section-heading">what quanevac tackles</h2>
+        <p>
+          <strong>1. Graph Decomposition:</strong> instead of attempting to throw an entire city graph into a single quantum circuit, Quanevac divides the evacuation grid into regional subgraphs, solving local choke points before routing globally.
+        </p>
+        <p>
+          <strong>2. Bounding Memory Usage:</strong> classical simulation requires strict state-space pruning so evaluation circuits don't exceed 16GB of local memory.
+        </p>
+        <p>
+          <strong>3. The Reality Check:</strong> this project taught me that mathematical elegance on paper means nothing if you don't account for the physical memory constraints of the machine running it.
+        </p>
+
+        <h2 class="project-section-heading">links & source</h2>
+        <div class="case-links" style="margin-top: 14px;">
+          <a href="https://github.com/whysooraj/Quanevac" target="_blank" rel="noopener" class="text-link primary">research repository ↗</a>
+        </div>
+      </div>
+
+    </article>
+
+    <footer>
+      <div class="footer-inner">
+        <div id="footer-greeting" class="footer-greeting">talk soon :)</div>
+        <div id="ist-time" class="footer-time">vizag · loading...</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="sound.js?v=vizag"></script>
+  <script src="app.js?v=vizag"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>laya-file-organizer · sooraj</title>
+  <meta name="description" content="case study: a local file organizer that cleans your downloads before they turn into a landfill by sooraj.">
+  <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=vizag">
+</head>
+<body>
+
+  <header class="nav-wrap">
+    <div class="nav">
+      <a href="index.html" class="nav-mark" aria-label="whysooraj home">
+        whysooraj.
+        <span class="nav-status"></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="about.html" class="nav-link">about</a>
+        <a href="work.html" class="nav-link active">work</a>
+        <a href="human.html" class="nav-link">human</a>
+        <a href="https://blog.sooraj.fun" target="_blank" rel="noopener" class="nav-link">blog ↗</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="icon-btn" aria-label="toggle sound"><span id="sound-icon"></span></button>
+        <button id="theme-toggle" class="icon-btn" aria-label="toggle theme">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="reveal" style="padding-top: 50px;">
+      
+      <div class="crumb-bar">
+        <a href="index.html">home</a>
+        <span>/</span>
+        <a href="work.html">work</a>
+        <span>/</span>
+        <span>laya-file-organizer</span>
+      </div>
+
+      <h1 class="project-hero-title">cleaning your downloads folder before it turns into a landfill.</h1>
+
+      <div class="project-stats-grid">
+        <div class="stat-item">
+          <b>role</b>
+          <span>creator & developer</span>
+        </div>
+        <div class="stat-item">
+          <b>stack</b>
+          <span>python · edge ml · posix</span>
+        </div>
+        <div class="stat-item">
+          <b>speed</b>
+          <span>&lt; 35ms per file</span>
+        </div>
+        <div class="stat-item">
+          <b>status</b>
+          <span style="color: var(--accent);">v1.0 open source</span>
+        </div>
+      </div>
+
+      <div class="project-text">
+        <p>
+          everyone's downloads folder has the same disease: invoices, lecture slides, ISO images, screenshots named <code>Screenshot_2026-11-12_at_00.png</code>, and zip files you downloaded three times because you forgot where they went.
+        </p>
+
+        <p>
+          most modern AI organizers try to solve this by sending your filenames, metadata, and document snippets over HTTPS to a remote cloud LLM. 
+          that approach is sluggish, costs money on every token, and sends your personal financial receipts and tax documents to a third-party server.
+        </p>
+
+        <h2 class="project-section-heading">how laya works</h2>
+        <p>
+          i built <strong>laya-file-organizer</strong> using a non-autoregressive decision model that runs 100% offline on your machine.
+        </p>
+        <p>
+          <strong>1. Sub-35ms Decisions:</strong> instead of paying 800ms of network latency for an LLM response, Laya parses file signatures, content hints, and path patterns locally in under 35 milliseconds.
+        </p>
+        <p>
+          <strong>2. Atomic Moves & Rollbacks:</strong> file management code has zero room for bugs. if a move operation gets interrupted, Laya records a transaction ledger that allows you to instantly revert any file back to its exact original directory.
+        </p>
+        <p>
+          <strong>3. Complete Privacy:</strong> zero network sockets, zero telemetry, zero tokens burned.
+        </p>
+
+        <h2 class="project-section-heading">links & source</h2>
+        <div class="case-links" style="margin-top: 14px;">
+          <a href="https://github.com/whysooraj/laya-file-organizer" target="_blank" rel="noopener" class="text-link primary">view on github ↗</a>
+        </div>
+      </div>
+
+    </article>
+
+    <footer>
+      <div class="footer-inner">
+        <div id="footer-greeting" class="footer-greeting">talk soon :)</div>
+        <div id="ist-time" class="footer-time">vizag · loading...</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="sound.js?v=vizag"></script>
+  <script src="app.js?v=vizag"></script>
+</body>
+</html>

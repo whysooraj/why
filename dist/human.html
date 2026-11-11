@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>human · sooraj</title>
+  <meta name="description" content="personal essay, quirks, and curiosities by sooraj.">
+  <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=vizag">
+</head>
+<body>
+
+  <header class="nav-wrap">
+    <div class="nav">
+      <a href="index.html" class="nav-mark" aria-label="whysooraj home">
+        whysooraj.
+        <span class="nav-status"></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="about.html" class="nav-link">about</a>
+        <a href="work.html" class="nav-link">work</a>
+        <a href="human.html" class="nav-link active">human</a>
+        <a href="https://blog.sooraj.fun" target="_blank" rel="noopener" class="nav-link">blog ↗</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="icon-btn" aria-label="toggle sound"><span id="sound-icon"></span></button>
+        <button id="theme-toggle" class="icon-btn" aria-label="toggle theme">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="reveal" style="padding-top: 55px;">
+      <h1 class="hero-title">curiosity, quirks & diet coke.</h1>
+      
+      <div class="human-text" style="margin-top: 24px;">
+        <p>
+          i notice things that other people walk past. 
+          i keep broken microcontrollers in drawers with the irrational conviction that <em>"maybe i'll use this someday"</em>. 
+          i rarely do, but the pile keeps growing anyway.
+        </p>
+
+        <p>
+          when i'm not staring at a terminal, i read physics papers, explore history, listen to lofi while taking walks near the beach, 
+          and drink an unhealthy amount of chilled Diet Coke.
+        </p>
+
+        <blockquote class="human-quote">
+          "the best software feels invisible, the best code is the code you never had to write, and good engineering is just empathy made runnable."
+        </blockquote>
+
+        <p>
+          i believe that people who build great things have genuine taste and care about how the user feels at every step of an interaction. 
+          if you're in Vizag or building something exciting, let's talk.
+        </p>
+
+        <div class="reach-row" style="margin-top: 40px;">
+          <a href="mailto:whysooraj.official@gmail.com" class="reach-mail">whysooraj.official@gmail.com</a>
+          <button class="copy-btn" data-copy-email="whysooraj.official@gmail.com" aria-label="copy email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div id="footer-greeting" class="footer-greeting">talk soon :)</div>
+        <div id="ist-time" class="footer-time">vizag · loading...</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="sound.js?v=vizag"></script>
+  <script src="app.js?v=vizag"></script>
+</body>
+</html>

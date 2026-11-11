@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>work · sooraj</title>
+  <meta name="description" content="projects, case studies, and code by sooraj (whysooraj).">
+  <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=vizag">
+</head>
+<body>
+
+  <header class="nav-wrap">
+    <div class="nav">
+      <a href="index.html" class="nav-mark" aria-label="whysooraj home">
+        whysooraj.
+        <span class="nav-status"></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="about.html" class="nav-link">about</a>
+        <a href="work.html" class="nav-link active">work</a>
+        <a href="human.html" class="nav-link">human</a>
+        <a href="https://blog.sooraj.fun" target="_blank" rel="noopener" class="nav-link">blog ↗</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="icon-btn" aria-label="toggle sound"><span id="sound-icon"></span></button>
+        <button id="theme-toggle" class="icon-btn" aria-label="toggle theme">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="reveal" style="padding-top: 55px;">
+      <h1 class="hero-title">work & open source.</h1>
+      <p class="hero-bio">
+        what i've built, what i broke along the way, and what i'm actively deploying.
+      </p>
+
+      <!-- Weekend Rollout Notice -->
+      <div class="weekend-callout">
+        <b>weekend deploy queue:</b>
+        <span>setting up live preview domains and asciinema terminal demo recordings for spotify-roaster & laya-file-organizer.</span>
+      </div>
+
+      <div style="margin-top: 40px;">
+        
+        <!-- spotify-roaster -->
+        <article class="case-study">
+          <div class="case-meta">
+            <span class="case-tag">web dev & fullstack ai</span>
+            <span>·</span>
+            <span>next.js 14 · tailwind · spotify oauth · gemini</span>
+            <span>·</span>
+            <span class="badge-pending">pending live deploy</span>
+          </div>
+          <h2 class="case-title">spotify-roaster: savage ai music taste analyzer.</h2>
+          <div class="case-body">
+            <p>
+              connects securely via backend-side Spotify OAuth (client secrets never exposed to client), queries user top artists and track acoustic features in parallel via <code>Promise.all</code>, and generates custom AI roasts and dynamic <code>@vercel/og</code> share cards.
+            </p>
+          </div>
+          <div class="case-links">
+            <a href="https://github.com/whysooraj/spotify-roaster" target="_blank" rel="noopener" class="text-link">github repository ↗</a>
+          </div>
+        </article>
+
+        <!-- laya-file-organizer -->
+        <article class="case-study">
+          <div class="case-meta">
+            <span class="case-tag">edge ai & systems</span>
+            <span>·</span>
+            <span>python · non-autoregressive</span>
+            <span>·</span>
+            <span class="badge-live">v1.0 open source</span>
+          </div>
+          <h2 class="case-title">laya-file-organizer: sub-35ms local file classifier.</h2>
+          <div class="case-body">
+            <p>
+              sorts disorganized download folders on the fly with zero cloud telemetry. uses local lightweight inference for sub-35ms categorization with filesystem transaction rollback safety.
+            </p>
+          </div>
+          <div class="case-links">
+            <a href="https://github.com/whysooraj/laya-file-organizer" target="_blank" rel="noopener" class="text-link">github repository ↗</a>
+          </div>
+        </article>
+
+        <!-- agent-setup -->
+        <article class="case-study">
+          <div class="case-meta">
+            <span class="case-tag">developer tooling</span>
+            <span>·</span>
+            <span>posix bash · unix</span>
+            <span>·</span>
+            <span class="badge-live">v1.0 release</span>
+          </div>
+          <h2 class="case-title">agent-setup: idempotent unix developer bootstrap CLI.</h2>
+          <div class="case-body">
+            <p>
+              sets up a full developer environment across macOS and Linux in under 40 seconds. non-destructive, zero dependencies, atomic symlinks.
+            </p>
+          </div>
+          <div class="case-links">
+            <a href="https://github.com/whysooraj/agent-setup" target="_blank" rel="noopener" class="text-link">github repository ↗</a>
+          </div>
+        </article>
+
+        <!-- Quanevac -->
+        <article class="case-study">
+          <div class="case-meta">
+            <span class="case-tag">quantum research</span>
+            <span>·</span>
+            <span>python · state optimization</span>
+            <span>·</span>
+            <span class="badge-pending">simulator in progress</span>
+          </div>
+          <h2 class="case-title">quanevac: quantum evacuation pathfinding simulation.</h2>
+          <div class="case-body">
+            <p>
+              evaluates evacuation route planning with quantum search heuristics, pruning exponential state-vector growth to avoid memory choking on classical computers.
+            </p>
+          </div>
+          <div class="case-links">
+            <a href="https://github.com/whysooraj/Quanevac" target="_blank" rel="noopener" class="text-link">github repository ↗</a>
+          </div>
+        </article>
+
+        <!-- Archived Note -->
+        <article class="case-study" style="opacity: 0.65;">
+          <div class="case-meta">
+            <span class="case-tag">archived project</span>
+            <span>·</span>
+            <span>codeweaver · node.js proxy</span>
+          </div>
+          <h2 class="case-title" style="font-size: 20px;">codeweaver (deprecated).</h2>
+          <div class="case-body">
+            <p>
+              local compatibility proxy routing Claude Code calls through Gemini CLI OAuth sessions. officially archived after Google restricted Gemini CLI authentication to enterprise workspace accounts.
+            </p>
+          </div>
+          <div class="case-links">
+            <a href="https://github.com/whysooraj/CodeWeaver" target="_blank" rel="noopener" class="text-link">view archived repo ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div id="footer-greeting" class="footer-greeting">talk soon :)</div>
+        <div id="ist-time" class="footer-time">vizag · loading...</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="sound.js?v=vizag"></script>
+  <script src="app.js?v=vizag"></script>
+</body>
+</html>

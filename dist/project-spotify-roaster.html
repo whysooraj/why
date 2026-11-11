@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>spotify-roaster · sooraj</title>
+  <meta name="description" content="case study: a website that roasts your music taste by sooraj.">
+  <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=vizag">
+</head>
+<body>
+
+  <header class="nav-wrap">
+    <div class="nav">
+      <a href="index.html" class="nav-mark" aria-label="whysooraj home">
+        whysooraj.
+        <span class="nav-status"></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="about.html" class="nav-link">about</a>
+        <a href="work.html" class="nav-link active">work</a>
+        <a href="human.html" class="nav-link">human</a>
+        <a href="https://blog.sooraj.fun" target="_blank" rel="noopener" class="nav-link">blog ↗</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="icon-btn" aria-label="toggle sound"><span id="sound-icon"></span></button>
+        <button id="theme-toggle" class="icon-btn" aria-label="toggle theme">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="reveal" style="padding-top: 50px;">
+      
+      <div class="crumb-bar">
+        <a href="index.html">home</a>
+        <span>/</span>
+        <a href="work.html">work</a>
+        <span>/</span>
+        <span>spotify-roaster</span>
+      </div>
+
+      <h1 class="project-hero-title">a website that roasts your music taste.</h1>
+
+      <div class="project-stats-grid">
+        <div class="stat-item">
+          <b>role</b>
+          <span>design & fullstack</span>
+        </div>
+        <div class="stat-item">
+          <b>stack</b>
+          <span>next.js · tailwind · gemini</span>
+        </div>
+        <div class="stat-item">
+          <b>latency</b>
+          <span>&lt; 350ms concurrent</span>
+        </div>
+        <div class="stat-item">
+          <b>status</b>
+          <span style="color: var(--accent);">live deploy in progress</span>
+        </div>
+      </div>
+
+      <div class="project-text">
+        <p>
+          most year-end music summaries are polite marketing campaigns. they show you friendly pastel graphs, congratulate you on listening to 40,000 minutes of acoustic ballads, and tell you that you're in the "top 1% of listeners".
+        </p>
+
+        <p>
+          i wanted something that acted like a brutally honest best friend. 
+          you sign in with Spotify, it analyzes your top tracks, your recurring artists, and your mood valence (how sad or upbeat your library actually is), and hands you a savage, sarcastic AI roast card.
+        </p>
+
+        <h2 class="project-section-heading">the hard parts</h2>
+        <p>
+          <strong>1. Zero Client Secret Exposure:</strong> Spotify's OAuth flow strictly prohibits public localhost redirects and client-side secret exchanges. all token negotiations happen in server-side API routes, so API credentials never touch the browser.
+        </p>
+        <p>
+          <strong>2. Beating API Latency:</strong> querying Spotify for a user's profile, top 50 tracks, top artists, and recent listening history in sequence took almost 2 seconds—which felt agonizingly slow. i bundled the requests using <code>Promise.all</code> on the server, cutting round-trip time down to under 350ms.
+        </p>
+        <p>
+          <strong>3. Making It Shareable:</strong> if someone gets roasted, they immediately want to post it to Twitter or Discord. i used Next.js <code>@vercel/og</code> to dynamically bake their roast, top offending songs, and artist badges into a high-res OpenGraph preview image on the fly.
+        </p>
+        <p>
+          <strong>4. Handling AI Quotas:</strong> external LLMs inevitably hit rate limits. i built an offline rule-based roasting engine that kicks in automatically if Gemini or OpenAI quotas exhaust, guaranteeing 100% uptime.
+        </p>
+
+        <h2 class="project-section-heading">links & source</h2>
+        <div class="case-links" style="margin-top: 14px;">
+          <a href="https://github.com/whysooraj/spotify-roaster" target="_blank" rel="noopener" class="text-link primary">view on github ↗</a>
+          <span class="text-link" style="color: var(--dim); border-color: transparent;">live instance rolling out this weekend</span>
+        </div>
+      </div>
+
+    </article>
+
+    <footer>
+      <div class="footer-inner">
+        <div id="footer-greeting" class="footer-greeting">talk soon :)</div>
+        <div id="ist-time" class="footer-time">vizag · loading...</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="sound.js?v=vizag"></script>
+  <script src="app.js?v=vizag"></script>
+</body>
+</html>

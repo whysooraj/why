@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "exit 0"
+    "build": "node build.js"
   }
 }
