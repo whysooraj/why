@@ -1,22 +1,21 @@
-// avatar.js - Original hand-coded comic Spider-Man with headphones, skyline & lofi music groove
+// avatar.js - Goofy comic-style Spider-Man wearing headphones with cursor tracking, music groove & interactions
 (function () {
   'use strict';
 
-  const canvas = document.getElementById('spidey-canvas');
-  const cardWrap = document.querySelector('.spidey-card-wrap');
-  const bubble = document.getElementById('avatar-bubble');
-
+  const canvas = document.getElementById('avatar-canvas');
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
   const dpr = window.devicePixelRatio || 1;
+  const container = canvas.parentElement;
+  const bubble = document.getElementById('avatar-bubble');
 
-  let width = 140;
-  let height = 220;
+  let width = 120;
+  let height = 120;
 
   function resize() {
-    width = canvas.parentElement.clientWidth || 140;
-    height = canvas.parentElement.clientHeight || 220;
+    width = container.clientWidth || 120;
+    height = container.clientHeight || 120;
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
@@ -24,302 +23,276 @@
   resize();
   window.addEventListener('resize', resize);
 
-  let targetGazeX = 0;
-  let targetGazeY = 0;
-  let gazeX = 0;
-  let gazeY = 0;
+  // Gaze & motion state
+  let targetGaze = { x: 0, y: 0 };
+  let currentGaze = { x: 0, y: 0 };
+  let blinkProgress = 0;
+  let isBlinking = false;
+  let isWinking = false;
+  let headTilt = 0;
   let targetTilt = 0;
-  let currentTilt = 0;
   let pokeTime = 0;
-
-  // Track mouse coordinates for gaze & 3D card tilt
-  window.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-
-    const dx = (e.clientX - cx) / (window.innerWidth / 2);
-    const dy = (e.clientY - cy) / (window.innerHeight / 2);
-
-    targetGazeX = Math.max(-4, Math.min(4, dx * 5));
-    targetGazeY = Math.max(-4, Math.min(4, dy * 5));
-    targetTilt = dx * 10;
-  });
 
   // Floating music notes
   const notes = [];
-  const noteChars = ['♪', '♫', '♩', '♬'];
   function spawnNote() {
-    if (notes.length > 4) return;
+    if (notes.length > 3) return;
     notes.push({
-      x: 105 + (Math.random() * 12 - 6),
-      y: 95,
-      char: noteChars[Math.floor(Math.random() * noteChars.length)],
+      x: 95 + (Math.random() * 8 - 4),
+      y: 50,
+      char: Math.random() > 0.5 ? '♪' : '♫',
       alpha: 1,
       vy: -0.6 - Math.random() * 0.4,
-      vx: 0.2 + Math.random() * 0.3,
-      size: 11 + Math.random() * 3
+      vx: 0.3 + Math.random() * 0.4,
+      size: 11 + Math.random() * 4
     });
   }
   setInterval(() => {
     if (Math.random() > 0.4) spawnNote();
   }, 1800);
 
-  // Render loop
-  function render(now) {
-    gazeX += (targetGazeX - gazeX) * 0.12;
-    gazeY += (targetGazeY - gazeY) * 0.12;
-    currentTilt += (targetTilt - currentTilt) * 0.08;
+  // Mouse tracking
+  window.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
 
-    const isDark = document.documentElement.classList.contains('dark');
+    const dx = e.clientX - cx;
+    const dy = e.clientY - cy;
+    const dist = Math.hypot(dx, dy) || 1;
+
+    const maxOffset = 5.5;
+    const factor = Math.min(dist / 320, 1);
+    targetGaze.x = (dx / dist) * maxOffset * factor;
+    targetGaze.y = (dy / dist) * maxOffset * factor;
+
+    // Subtle head tilt toward mouse
+    targetTilt = (dx / dist) * 0.08 * factor;
+  });
+
+  // Blink cycle
+  function scheduleBlink() {
+    setTimeout(() => {
+      triggerBlink();
+      scheduleBlink();
+    }, 2400 + Math.random() * 3800);
+  }
+
+  function triggerBlink() {
+    if (isBlinking) return;
+    isBlinking = true;
+    const start = performance.now();
+    const duration = 150;
+
+    function step(now) {
+      const elapsed = now - start;
+      if (elapsed < duration) {
+        blinkProgress = Math.sin((elapsed / duration) * Math.PI);
+        requestAnimationFrame(step);
+      } else {
+        blinkProgress = 0;
+        isBlinking = false;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  scheduleBlink();
+
+  // Spidey eye path generator (left side, right side is mirrored)
+  function drawComicEye(cx, cy, scaleX, scaleY, isLeft, blink) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    if (!isLeft) ctx.scale(-1, 1);
+
+    // Squash eye vertically during blink
+    const hScale = Math.max(0.08, 1 - blink * 0.94);
+    ctx.scale(scaleX, scaleY * hScale);
+
+    ctx.beginPath();
+    // Classic comic Spidey eye contour
+    ctx.moveTo(-18, 4);
+    ctx.bezierCurveTo(-14, 18, 2, 16, 12, 12);
+    ctx.bezierCurveTo(18, 8, 17, -10, 6, -18);
+    ctx.bezierCurveTo(-4, -16, -14, -8, -18, 4);
+    ctx.closePath();
+
+    // Eye outline & white lens
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 3.6;
+    ctx.strokeStyle = '#111111';
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+
+    // Clip for inner pupil
+    ctx.clip();
+
+    // Goofy expressive pupil
+    if (hScale > 0.3) {
+      const px = (isLeft ? currentGaze.x : -currentGaze.x) * 1.5;
+      const py = currentGaze.y * 1.5;
+
+      ctx.beginPath();
+      ctx.arc(px, py + 1, 4.2, 0, Math.PI * 2);
+      ctx.fillStyle = '#111111';
+      ctx.fill();
+
+      // Pupil highlight glint
+      ctx.beginPath();
+      ctx.arc(px - 1.4, py - 0.6, 1.4, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
+
+  // Draw loop
+  function render(now) {
+    // Smooth dampening
+    currentGaze.x += (targetGaze.x - currentGaze.x) * 0.12;
+    currentGaze.y += (targetGaze.y - currentGaze.y) * 0.12;
+    headTilt += (targetTilt - headTilt) * 0.1;
+
+    // Rhythmic headphone music groove
+    const musicGroove = Math.sin(now * 0.005) * 1.8;
+    const pokeBounce = Math.sin((now - pokeTime) * 0.02) * Math.max(0, 1 - (now - pokeTime) / 400) * 4;
+    const headY = 62 + musicGroove + pokeBounce;
+    const headX = 60;
 
     ctx.clearRect(0, 0, width, height);
 
-    // 1. Comic Card Background & Cityscape
-    // Sky gradient
-    const skyGrad = ctx.createLinearGradient(0, 0, 0, height);
-    if (isDark) {
-      skyGrad.addColorStop(0, '#131b26');
-      skyGrad.addColorStop(0.65, '#0a0d14');
-      skyGrad.addColorStop(1, '#05070a');
-    } else {
-      skyGrad.addColorStop(0, '#7bb3d6');
-      skyGrad.addColorStop(0.6, '#b5d4e8');
-      skyGrad.addColorStop(1, '#e3eff7');
-    }
-    ctx.fillStyle = skyGrad;
-    ctx.fillRect(0, 0, width, height);
-
-    // Comic Skyscraper Silhouettes (Background)
-    ctx.fillStyle = isDark ? '#1a2433' : '#94b9d1';
-    // Building 1 (Left tall)
-    ctx.beginPath();
-    ctx.moveTo(0, 30);
-    ctx.lineTo(44, 15);
-    ctx.lineTo(44, height);
-    ctx.lineTo(0, height);
-    ctx.fill();
-
-    // Building 2 (Right tall)
-    ctx.fillStyle = isDark ? '#1f2b3d' : '#84aecd';
-    ctx.beginPath();
-    ctx.moveTo(92, 20);
-    ctx.lineTo(width, 40);
-    ctx.lineTo(width, height);
-    ctx.lineTo(92, height);
-    ctx.fill();
-
-    // Halftone / grid windows
-    ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.35)';
-    ctx.lineWidth = 1;
-    for (let wy = 30; wy < 120; wy += 9) {
-      ctx.beginPath();
-      ctx.moveTo(5, wy);
-      ctx.lineTo(40, wy - 10);
-      ctx.moveTo(96, wy - 5);
-      ctx.lineTo(135, wy + 8);
-      ctx.stroke();
-    }
-
-    // Top Hanging Spider-Logo Motif
+    // Save for head rotation & bob
     ctx.save();
-    ctx.strokeStyle = '#c52222';
-    ctx.fillStyle = '#c52222';
-    ctx.lineWidth = 1.4;
-    // Spider thread
-    ctx.beginPath();
-    ctx.moveTo(70, 0);
-    ctx.lineTo(70, 22);
-    ctx.stroke();
-    // Spider body
-    ctx.beginPath();
-    ctx.ellipse(70, 26, 4, 6, 0, 0, Math.PI * 2);
-    ctx.fill();
-    // Spider legs
-    ctx.beginPath();
-    // Left legs
-    ctx.moveTo(68, 24); ctx.lineTo(62, 20); ctx.lineTo(60, 26);
-    ctx.moveTo(68, 27); ctx.lineTo(60, 27); ctx.lineTo(58, 33);
-    // Right legs
-    ctx.moveTo(72, 24); ctx.lineTo(78, 20); ctx.lineTo(80, 26);
-    ctx.moveTo(72, 27); ctx.lineTo(80, 27); ctx.lineTo(82, 33);
-    ctx.stroke();
-    ctx.restore();
+    ctx.translate(headX, headY);
+    ctx.rotate(headTilt);
 
-    // 2. Spider-Man Figure with Headphone Groove
-    const groove = Math.sin(now * 0.004) * 2;
-    const pokeBounce = Math.sin((now - pokeTime) * 0.02) * Math.max(0, 1 - (now - pokeTime) / 350) * 4;
-    const spideyY = 138 + groove + pokeBounce;
-    const spideyX = 70;
-
-    ctx.save();
-    ctx.translate(spideyX, spideyY);
-    ctx.rotate((currentTilt * Math.PI) / 180);
-
-    // Shoulder & Neck Base (Red with ink lines)
-    ctx.fillStyle = '#dc2626';
-    ctx.strokeStyle = '#111111';
-    ctx.lineWidth = 2.4;
+    // 1. Headphone Headband (behind head)
     ctx.beginPath();
-    ctx.moveTo(-52, 60);
-    ctx.quadraticCurveTo(-38, 28, -20, 24);
-    ctx.lineTo(20, 24);
-    ctx.quadraticCurveTo(38, 28, 52, 60);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    // Shoulder webbing
-    ctx.strokeStyle = 'rgba(0, 0, 0, 0.45)';
-    ctx.lineWidth = 1.1;
-    ctx.beginPath();
-    ctx.moveTo(-16, 24); ctx.lineTo(-38, 58);
-    ctx.moveTo(16, 24); ctx.lineTo(38, 58);
-    ctx.moveTo(0, 24); ctx.lineTo(0, 60);
-    ctx.stroke();
-
-    // 3. Headphone Headband (behind head)
-    ctx.beginPath();
-    ctx.arc(0, -6, 44, Math.PI * 1.08, Math.PI * 1.92, false);
-    ctx.lineWidth = 8;
-    ctx.strokeStyle = '#1a1a1a';
+    ctx.arc(0, -5, 41, Math.PI * 1.05, Math.PI * 1.95, false);
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = '#222222';
     ctx.lineCap = 'round';
     ctx.stroke();
 
-    // Padded headband inner cushion
+    // Padded headband top cushion
     ctx.beginPath();
-    ctx.arc(0, -6, 44, Math.PI * 1.25, Math.PI * 1.75, false);
-    ctx.lineWidth = 11;
-    ctx.strokeStyle = '#2b2b2b';
+    ctx.arc(0, -5, 41, Math.PI * 1.25, Math.PI * 1.75, false);
+    ctx.lineWidth = 9;
+    ctx.strokeStyle = '#383838';
     ctx.stroke();
 
-    // 4. Spider-Man Head
-    ctx.fillStyle = '#dc2626';
-    ctx.strokeStyle = '#111111';
-    ctx.lineWidth = 2.4;
+    // 2. Spider-Man Head / Mask
     ctx.beginPath();
-    ctx.ellipse(0, 0, 36, 42, 0, 0, Math.PI * 2);
+    ctx.ellipse(0, 0, 34, 38, 0, 0, Math.PI * 2);
+    ctx.fillStyle = '#dc2626'; // Iconic Spidey Red
     ctx.fill();
+    ctx.lineWidth = 2.4;
+    ctx.strokeStyle = '#111111';
     ctx.stroke();
 
-    // Webbing on Face
+    // 3. Webbing on Mask
     ctx.save();
     ctx.beginPath();
-    ctx.ellipse(0, 0, 36, 42, 0, 0, Math.PI * 2);
-    ctx.clip();
+    ctx.ellipse(0, 0, 34, 38, 0, 0, Math.PI * 2);
+    ctx.clip(); // Keep webs inside mask
 
-    ctx.strokeStyle = 'rgba(10, 10, 10, 0.55)';
-    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = 'rgba(20, 20, 20, 0.45)';
+    ctx.lineWidth = 1.1;
 
-    // Radiating web lines
-    [-155, -130, -105, -90, -75, -50, -25, 0, 25, 50, 75, 90, 105, 130, 155].forEach((deg) => {
-      const rad = (deg * Math.PI) / 180;
+    // Radiating web lines from center (0, 0)
+    const angles = [-160, -135, -110, -90, -70, -45, -20, 0, 20, 45, 70, 90, 110, 135, 160];
+    angles.forEach((ang) => {
+      const rad = (ang * Math.PI) / 180;
       ctx.beginPath();
       ctx.moveTo(0, 0);
-      ctx.lineTo(Math.cos(rad) * 48, Math.sin(rad) * 48);
+      ctx.lineTo(Math.cos(rad) * 44, Math.sin(rad) * 44);
       ctx.stroke();
     });
 
-    // Scalloped concentric web arcs
-    [13, 24, 35].forEach((r) => {
+    // Scalloped concentric curved web rings
+    [12, 22, 32].forEach((r) => {
       ctx.beginPath();
-      for (let a = -155; a <= 155; a += 26) {
+      for (let a = -160; a <= 160; a += 25) {
         const rad1 = (a * Math.PI) / 180;
-        const rad2 = ((a + 26) * Math.PI) / 180;
+        const rad2 = ((a + 25) * Math.PI) / 180;
         const x1 = Math.cos(rad1) * r;
         const y1 = Math.sin(rad1) * r;
         const x2 = Math.cos(rad2) * r;
         const y2 = Math.sin(rad2) * r;
         const midR = r * 0.88;
-        const midA = ((a + 13) * Math.PI) / 180;
+        const midA = ((a + 12.5) * Math.PI) / 180;
+        const mx = Math.cos(midA) * midR;
+        const my = Math.sin(midA) * midR;
         ctx.moveTo(x1, y1);
-        ctx.quadraticCurveTo(Math.cos(midA) * midR, Math.sin(midA) * midR, x2, y2);
+        ctx.quadraticCurveTo(mx, my, x2, y2);
       }
       ctx.stroke();
     });
     ctx.restore();
 
-    // 5. Classic Comic Eyes (Big expressive white triangular lenses)
-    function drawSpideyEye(isLeft) {
-      ctx.save();
-      if (!isLeft) ctx.scale(-1, 1);
-
-      ctx.beginPath();
-      // Comic eye contour
-      ctx.moveTo(-19, 6);
-      ctx.bezierCurveTo(-14, 20, 3, 17, 13, 13);
-      ctx.bezierCurveTo(20, 8, 18, -12, 6, -20);
-      ctx.bezierCurveTo(-5, -17, -15, -8, -19, 6);
-      ctx.closePath();
-
-      // White fill
-      ctx.fillStyle = '#ffffff';
-      ctx.fill();
-
-      // Bold black comic border
-      ctx.lineWidth = 4;
-      ctx.strokeStyle = '#111111';
-      ctx.lineJoin = 'round';
-      ctx.stroke();
-
-      // Subtle dynamic eye lens glint / pupil feel
-      ctx.clip();
-      ctx.fillStyle = 'rgba(0,0,0,0.08)';
-      ctx.beginPath();
-      const px = (isLeft ? gazeX : -gazeX) * 1.6;
-      const py = gazeY * 1.6;
-      ctx.ellipse(px + 2, py + 2, 7, 10, 0, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.restore();
-    }
+    // 4. Goofy Comic Eyes
+    const leftBlink = isWinking ? 1 : blinkProgress;
+    const rightBlink = blinkProgress;
 
     // Left Eye
-    ctx.save();
-    ctx.translate(-15, 2);
-    drawSpideyEye(true);
-    ctx.restore();
-
+    drawComicEye(-14, 2, 0.88, 0.88, true, leftBlink);
     // Right Eye
+    drawComicEye(14, 2, 0.88, 0.88, false, rightBlink);
+
+    // 5. Over-Ear Headphones (Left & Right Earcups)
+    const earcupY = 0;
+    // Left earcup
     ctx.save();
-    ctx.translate(15, 2);
-    drawSpideyEye(false);
+    ctx.translate(-35, earcupY);
+    ctx.rotate(-0.06);
+    // Outer cup
+    ctx.fillStyle = '#1c1c1c';
+    ctx.strokeStyle = '#111111';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.roundRect(-5, -15, 11, 30, [5, 3, 3, 5]);
+    ctx.fill();
+    ctx.stroke();
+    // Inner cushion
+    ctx.fillStyle = '#3f3f46';
+    ctx.beginPath();
+    ctx.roundRect(3, -12, 5, 24, [2, 4, 4, 2]);
+    ctx.fill();
+    // Detail accent dot
+    ctx.fillStyle = '#e11d48';
+    ctx.beginPath();
+    ctx.arc(0, 0, 2.5, 0, Math.PI * 2);
+    ctx.fill();
     ctx.restore();
 
-    // 6. Over-Ear Black Studio Headphones
-    [-1, 1].forEach((side) => {
-      ctx.save();
-      ctx.translate(side * 38, 0);
-      ctx.rotate(side * -0.06);
+    // Right earcup
+    ctx.save();
+    ctx.translate(35, earcupY);
+    ctx.rotate(0.06);
+    // Outer cup
+    ctx.fillStyle = '#1c1c1c';
+    ctx.strokeStyle = '#111111';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.roundRect(-6, -15, 11, 30, [3, 5, 5, 3]);
+    ctx.fill();
+    ctx.stroke();
+    // Inner cushion
+    ctx.fillStyle = '#3f3f46';
+    ctx.beginPath();
+    ctx.roundRect(-8, -12, 5, 24, [4, 2, 2, 4]);
+    ctx.fill();
+    // Detail accent dot
+    ctx.fillStyle = '#e11d48';
+    ctx.beginPath();
+    ctx.arc(0, 0, 2.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
 
-      // Outer earcup
-      ctx.fillStyle = '#111111';
-      ctx.strokeStyle = '#050505';
-      ctx.lineWidth = 2.2;
-      ctx.beginPath();
-      ctx.roundRect(side === -1 ? -6 : -5, -18, 11, 36, [5, 5, 5, 5]);
-      ctx.fill();
-      ctx.stroke();
+    ctx.restore(); // Restore head transform
 
-      // Metallic silver accent ring
-      ctx.strokeStyle = '#888888';
-      ctx.lineWidth = 1.2;
-      ctx.beginPath();
-      ctx.roundRect(side === -1 ? -4 : -3, -15, 7, 30, [3, 3, 3, 3]);
-      ctx.stroke();
-
-      // Soft padded inner cushion
-      ctx.fillStyle = '#2c2c2e';
-      ctx.beginPath();
-      ctx.roundRect(side === -1 ? 3 : -7, -14, 4, 28, [2, 2, 2, 2]);
-      ctx.fill();
-
-      ctx.restore();
-    });
-
-    ctx.restore(); // Restore spidey translation
-
-    // 7. Floating Music Notes
+    // 6. Floating Music Notes
     for (let i = notes.length - 1; i >= 0; i--) {
       const n = notes[i];
       n.x += n.vx;
@@ -332,22 +305,17 @@
       }
 
       ctx.save();
-      ctx.fillStyle = `rgba(234, 179, 8, ${n.alpha})`;
+      ctx.fillStyle = `rgba(180, 83, 9, ${n.alpha})`;
       ctx.font = `${n.size}px monospace`;
       ctx.fillText(n.char, n.x, n.y);
       ctx.restore();
     }
 
-    // Outer subtle card border
-    ctx.strokeStyle = isDark ? '#262626' : '#111111';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(0, 0, width, height);
-
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
 
-  // Witty Spidey lines on click
+  // Witty Spidey quotes when poked
   const quotes = [
     'my spidey sense tingled.',
     'listening to lofi while shipping.',
@@ -364,8 +332,13 @@
     pokeTime = performance.now();
     if (window.sound) window.sound.play('poke');
 
+    // Goofy wink on poke
+    isWinking = true;
+    setTimeout(() => {
+      isWinking = false;
+    }, 450);
+
     spawnNote();
-    setTimeout(spawnNote, 120);
 
     if (bubble) {
       bubble.textContent = quotes[quoteIndex % quotes.length];
@@ -379,6 +352,6 @@
     }
   }
 
-  cardWrap.addEventListener('click', poke);
+  container.addEventListener('click', poke);
   window.avatar = { poke };
 })();

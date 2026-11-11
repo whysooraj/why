@@ -292,7 +292,7 @@ h1.hero-title {
   margin-top: 14px;
 }
 
-/* Hero Actions & Status Alignment */
+/* Hero Actions & Clean Status Alignment */
 .hero-actions {
   margin-top: 24px;
   display: flex;
@@ -372,112 +372,64 @@ h1.hero-title {
   align-self: flex-start;
 }
 
-/* Spiderman Headphone Comic Card */
-.spidey-card-wrap {
+/* Original Circular Spidey Avatar (from commit 3120792) */
+.avatar-wrap {
   position: relative;
   flex-shrink: 0;
-  width: 140px;
-  perspective: 700px;
+  width: 120px;
+  height: 120px;
 }
 
-.spidey-card {
-  width: 140px;
-  height: 220px;
-  border-radius: 14px;
-  border: 1.8px solid var(--fg);
+.avatar-canvas-container {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--card-bg);
   overflow: hidden;
   position: relative;
-  background: #111;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   cursor: pointer;
-  transition: transform 0.15s ease-out, box-shadow 0.25s ease;
-  animation: lofi-groove 3.6s infinite ease-in-out;
+  transition: border-color 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes lofi-groove {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-2.5px) rotate(0.8deg);
-  }
-  75% {
-    transform: translateY(1.5px) rotate(-0.8deg);
-  }
+.avatar-canvas-container:hover {
+  border-color: var(--fg);
+  transform: scale(1.03);
 }
 
-.spidey-card:hover {
-  box-shadow: 0 14px 32px rgba(225, 29, 72, 0.22), 0 4px 10px rgba(0, 0, 0, 0.14);
+.avatar-canvas-container:active {
+  transform: scale(0.96);
 }
 
-.spidey-card img {
+canvas#avatar-canvas {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
-  user-select: none;
-  pointer-events: none;
 }
 
-/* Floating Music Notes */
-.music-notes-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 5;
-}
-
-.music-note {
-  position: absolute;
-  font-family: var(--mono);
-  font-size: 13px;
-  color: #ffca28;
-  opacity: 0;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
-  animation: float-note 2.4s infinite linear;
-}
-
-@keyframes float-note {
-  0% {
-    opacity: 0;
-    transform: translate(0, 0) scale(0.7);
-  }
-  20% {
-    opacity: 0.9;
-  }
-  80% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-14px, -46px) scale(1.2);
-  }
-}
-
-/* Comic Speech Bubble */
 .speech-bubble {
   position: absolute;
-  bottom: -36px;
-  left: 50%;
-  transform: translateX(-50%) translateY(6px);
+  bottom: -32px;
+  right: -10px;
   background: var(--fg);
   color: var(--bg);
   font-family: var(--hand);
   font-size: 12px;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 99px;
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
+  transform: translateY(6px);
   transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
-  z-index: 15;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  z-index: 10;
 }
 
 .speech-bubble.visible {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 /* Case Studies (Story format) */

@@ -1,4 +1,4 @@
-// app.js - Main interactions, time offset, sound, toast, and copy helpers
+// app.js - Main interactions, Vizag time offset, sound, toast, and copy helpers
 (function () {
   'use strict';
 
@@ -57,7 +57,7 @@
     });
   }
 
-  // 3. Dynamic Bengaluru Time Clock & Visitor Timezone Difference
+  // 3. Dynamic Vizag Time Clock & Visitor Timezone Difference
   const timeEl = document.getElementById('ist-time');
   function updateTime() {
     if (!timeEl) return;
@@ -87,7 +87,7 @@
         diffStr = ` // ${hPart}${mPart} ${direction}`;
       }
 
-      timeEl.textContent = `${istStr} · bengaluru${diffStr}`;
+      timeEl.textContent = `${istStr} · vizag${diffStr}`;
     } catch (e) {}
   }
   updateTime();
@@ -98,7 +98,7 @@
   if (greetingEl) {
     const hour = new Date().getHours();
     if (hour >= 5 && hour < 12) {
-      greetingEl.textContent = 'up this early? go have breakfast first :)';
+      greetingEl.textContent = 'up this early? crack open a cold diet coke first :)';
     } else if (hour >= 12 && hour < 17) {
       greetingEl.textContent = 'shouldn’t you be working right now? :)';
     } else if (hour >= 17 && hour < 22) {
