@@ -110,6 +110,23 @@ button {
   }
 }
 
+@media (max-width: 480px) {
+  :root {
+    --pad: 16px;
+  }
+  .nav-links {
+    gap: 2px;
+  }
+  .nav-link {
+    padding: 6px 6px;
+    font-size: 13px;
+  }
+  .nav-actions {
+    margin-left: 4px;
+    padding-left: 4px;
+  }
+}
+
 /* Top Sticky Navigation */
 .nav-wrap {
   position: sticky;
