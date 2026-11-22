@@ -518,6 +518,62 @@ html.dark .badge-live {
   text-decoration: underline;
 }
 
+/* Project Screenshot Previews */
+.case-preview {
+  margin: 16px 0 18px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.case-preview:hover {
+  border-color: var(--dim);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .case-preview:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.case-preview a {
+  display: block;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.case-preview img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.project-hero-preview {
+  margin: 24px 0 32px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+.project-hero-preview a {
+  display: block;
+  line-height: 0;
+}
+
+.project-hero-preview img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
 .case-body {
   color: var(--fg-muted);
   font-size: 15px;
