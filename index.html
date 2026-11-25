@@ -100,6 +100,38 @@
     <section id="work" class="reveal">
       <div class="section-label">featured projects</div>
 
+      <!-- Project 0: dev-context -->
+      <article class="case-study">
+        <div class="case-meta">
+          <span class="case-tag">developer tooling & mcp</span>
+          <span>·</span>
+          <span>python stdlib · json-rpc 2.0 · posix flock</span>
+          <span>·</span>
+          <span class="badge-live">v1.0.0 open source</span>
+        </div>
+        <h2 class="case-title">
+          <a href="project-dev-context.html">dev-context: zero-cold-start session handoff for coding agents.</a>
+        </h2>
+        <div class="case-preview">
+          <a href="project-dev-context.html" aria-label="read dev-context case study">
+            <img src="assets/projects/dev-context.png" alt="dev-context local-first context layer and mcp server preview" width="1440" height="900" loading="lazy">
+          </a>
+        </div>
+        <div class="case-body">
+          <p>
+            every time you switch repos or hit a context window limit, coding agents wake up blind and burn minutes re-running <code>git status</code>, reading diffs, and asking what you were doing.
+          </p>
+          <p>
+            <strong>dev-context</strong> (<code>dc</code>) is a local-first context engine and zero-dependency stdio MCP server (8 primary tools + 4 aliases) for Antigravity, Claude Code, Cursor, and Codex. scans 100 repos in ~71ms P50, persists atomic goals and focus queues with POSIX <code>flock</code> + <code>os.replace</code>, and hands off exact next actions via <code>dc resume</code>.
+          </p>
+        </div>
+        <div class="case-links">
+          <a href="project-dev-context.html" class="text-link primary">case study ↗</a>
+          <a href="https://github.com/whysooraj/dev-context" target="_blank" rel="noopener" class="text-link">github ↗</a>
+          <a href="https://m8ven.ai/mcp/whysooraj/dev-context" target="_blank" rel="noopener" class="text-link">mcp listing ↗</a>
+        </div>
+      </article>
+
       <!-- Project 1: spotify-roaster -->
       <article class="case-study">
         <div class="case-meta">

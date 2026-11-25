@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>dev-context · sooraj</title>
+  <meta name="description" content="case study: a local-first context layer and zero-dependency stdio MCP server for coding agents by sooraj.">
+  <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=shots-1">
+</head>
+<body>
+
+  <header class="nav-wrap">
+    <div class="nav">
+      <a href="index.html" class="nav-mark" aria-label="whysooraj home">
+        whysooraj.
+        <span class="nav-status"></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="about.html" class="nav-link">about</a>
+        <a href="work.html" class="nav-link active">work</a>
+        <a href="human.html" class="nav-link">human</a>
+        <a href="https://blog.sooraj.fun" target="_blank" rel="noopener" class="nav-link">blog ↗</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="icon-btn" aria-label="toggle sound"><span id="sound-icon"></span></button>
+        <button id="theme-toggle" class="icon-btn" aria-label="toggle theme">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="reveal" style="padding-top: 50px;">
+
+      <div class="crumb-bar">
+        <a href="index.html">home</a>
+        <span>/</span>
+        <a href="work.html">work</a>
+        <span>/</span>
+        <span>dev-context</span>
+      </div>
+
+      <h1 class="project-hero-title">zero-cold-start session handoff for coding agents.</h1>
+
+      <div class="project-stats-grid">
+        <div class="stat-item">
+          <b>role</b>
+          <span>creator & maintainer</span>
+        </div>
+        <div class="stat-item">
+          <b>stack</b>
+          <span>python stdlib · mcp · posix</span>
+        </div>
+        <div class="stat-item">
+          <b>100-repo scan</b>
+          <span>~71ms p50</span>
+        </div>
+        <div class="stat-item">
+          <b>status</b>
+          <span style="color: var(--accent);">v1.0.0 open source</span>
+        </div>
+      </div>
+
+      <div class="project-hero-preview">
+        <a href="https://github.com/whysooraj/dev-context" target="_blank" rel="noopener" aria-label="inspect dev-context on github">
+          <img src="assets/projects/dev-context.png" alt="dev-context hero and dc resume handoff output preview" width="1440" height="900" loading="eager">
+        </a>
+      </div>
+
+      <div class="project-text">
+        <p>
+          switching repositories or resuming after a context limit hits the same wall every time: the next coding agent opens on a blank prompt with zero memory of the active goal, uncommitted diff footprint, current blocker, or exact next command.
+        </p>
+
+        <p>
+          <strong>dev-context</strong> (<code>dc</code>) fixes the agent cold-start penalty with a pure Python standard-library engine. it scans your workspace in parallel, persists session state and 4-hex-ID sprint queues on disk, and exposes the whole context layer over both CLI and a built-in JSON-RPC 2.0 stdio MCP server.
+        </p>
+
+        <h2 class="project-section-heading">cross-agent session handoff</h2>
+        <p>
+          when Agent A finishes or gets interrupted, it updates local session memory via <code>dc goal</code> or MCP <code>update_session</code>. when Agent B starts in Antigravity, Claude Code, Cursor, or Codex, calling <code>dc resume</code> or <code>get_resume_handoff</code> returns a structured operational handoff card with exact diff footprints, blockers, and the next concrete action — verified end-to-end by <code>tests/test_blind_agent_handoff.py</code>.
+        </p>
+
+        <div class="project-hero-preview">
+          <img src="assets/projects/dev-context-handoff.png" alt="dev-context cross-agent handoff sequence from Claude Code through atomic sessions.json to Cursor" width="1440" height="900" loading="lazy">
+        </div>
+
+        <h2 class="project-section-heading">zero-dependency stdio mcp server</h2>
+        <p>
+          <code>dev_context_mcp.py</code> implements JSON-RPC 2.0 over stdio with zero third-party packages. it exposes 8 primary tools (<code>get_project_context</code>, <code>get_current_goal</code>, <code>update_session</code>, <code>get_open_tasks</code>, <code>get_recent_changes</code>, <code>mark_task_status</code>, <code>get_next_action</code>, <code>get_resume_handoff</code>) plus 4 legacy aliases for backward compatibility.
+        </p>
+
+        <div class="project-hero-preview">
+          <img src="assets/projects/dev-context-mcp.png" alt="dev-context MCP explorer inspecting all 12 stdio JSON-RPC 2.0 tools" width="1440" height="900" loading="lazy">
+        </div>
+
+        <h2 class="project-section-heading">concurrency & measured scaling</h2>
+        <p>
+          <strong>1. Atomic State & File Locking:</strong> both <code>sessions.json</code> and <code>ROADMAP.md</code> use POSIX <code>fcntl.flock</code> on Linux/macOS and <code>msvcrt.locking</code> on Windows, writing through temp files with <code>fsync</code> + <code>os.replace</code> and self-healing corrupted JSON backups automatically.
+        </p>
+        <p>
+          <strong>2. Linear Workspace Discovery:</strong> benchmarked via <code>benchmarks/benchmark.py</code> on synthetic trees with 15% worktrees and 10% heavy dirty repos — 8.96ms P50 for 10 repos, 70.93ms P50 for 100 repos, 377.47ms P50 for 500 repos, and 743.99ms P50 for 1,000 repos, with subprocess timeouts isolating hanging git tasks (45/45 resilient discovery in 0.04s).
+        </p>
+
+        <div class="project-hero-preview">
+          <img src="assets/projects/dev-context-benchmarks.png" alt="dev-context cold discovery latency benchmarks scaling from 10 to 1,000 repositories" width="1440" height="900" loading="lazy">
+        </div>
+
+        <h2 class="project-section-heading">links & source</h2>
+        <div class="case-links" style="margin-top: 14px;">
+          <a href="https://github.com/whysooraj/dev-context" target="_blank" rel="noopener" class="text-link primary">view on github ↗</a>
+          <a href="https://m8ven.ai/mcp/whysooraj/dev-context" target="_blank" rel="noopener" class="text-link">m8ven mcp listing ↗</a>
+        </div>
+      </div>
+
+    </article>
+
+    <footer>
+      <div class="footer-inner">
+        <div id="footer-greeting" class="footer-greeting">talk soon :)</div>
+        <div id="ist-time" class="footer-time">vizag · loading...</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="sound.js?v=vizag"></script>
+  <script src="app.js?v=vizag"></script>
+</body>
+</html>

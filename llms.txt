@@ -20,24 +20,30 @@ This is a machine-readable plain-text summary of sooraj.fun for AI agents and sc
 
 ## Featured Projects
 
-### 1. Spotify Roaster (Web Dev & AI)
+### 1. dev-context (Developer Tooling & MCP)
+- Repository: https://github.com/whysooraj/dev-context
+- Status: v1.0.0 Open Source
+- Description: Local-first development context engine, cross-agent session handoff CLI (`dc`), and zero-dependency JSON-RPC 2.0 stdio MCP server for Antigravity, Claude Code, Cursor, and Codex.
+- Tech & Architecture: Pure Python stdlib, 8 primary MCP tools + 4 legacy aliases, parallel git/worktree discovery (~71ms P50 across 100 repos, ~744ms P50 across 1,000 repos), POSIX flock / Windows msvcrt locking with atomic fsync + os.replace persistence.
+
+### 2. Spotify Roaster (Web Dev & AI)
 - Repository: https://github.com/whysooraj/spotify-roaster
 - Status: Live deployment in progress (weekend rollout)
 - Description: AI-powered music roaster built with Next.js and Tailwind CSS.
 - Tech & Architecture: Server-side Spotify OAuth token exchange (zero client secret leaks), concurrent querying with Promise.all, dynamic @vercel/og social cards, offline rule-based fallback.
 
-### 2. Laya File Organizer (Edge AI & Systems)
+### 3. Laya File Organizer (Edge AI & Systems)
 - Repository: https://github.com/whysooraj/laya-file-organizer
 - Status: v1.0 Open Source
 - Description: Sub-35ms local file classifier and desktop organizer using non-autoregressive decision heuristics.
 - Core Feature: 100% offline edge inference, zero cloud telemetry, safe-move atomic file transactions.
 
-### 3. Agent Setup (SWE & DevOps)
+### 4. Agent Setup (SWE & DevOps)
 - Repository: https://github.com/whysooraj/agent-setup
 - Status: v1.0 Release
 - Description: Deterministic, idempotent developer environment bootstrap CLI for Linux and macOS. Configures full stacks in under 40 seconds without overwriting user dotfiles.
 
-### 4. Quanevac (Quantum Research & Algorithms)
+### 5. Quanevac (Quantum Research & Algorithms)
 - Repository: https://github.com/whysooraj/Quanevac
 - Status: Research Simulator
 - Description: Evacuation routing using quantum search heuristics. Bounding matrix dimensions and pruning exponential state-vector growth on classical hardware.
