@@ -1,0 +1,151 @@
+%-------------------------
+% Resume in LaTeX — AI / ML & Agent Tooling Intern
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{fontawesome5}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+\usepackage[default]{lato}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.55in}
+\addtolength{\textheight}{1.1in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, label=\textbullet]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+%----------HEADING----------%
+\begin{center}
+    \textbf{\Huge \scshape Mouli Sai Santhosh Sooraj Makala} \\ \vspace{4pt}
+    \small \faPhone* \ +91 95153 14864 \ $|$ \
+    \faMapMarker* \ Visakhapatnam, India \ $|$ \
+    \faEnvelope \ \href{mailto:whysooraj.official@gmail.com}{\underline{whysooraj.official@gmail.com}} \\ \vspace{2pt}
+    \faGlobe \ \href{https://sooraj.fun}{\underline{sooraj.fun}} \ $|$ \
+    \faGithub \ \href{https://github.com/whysooraj}{\underline{github.com/whysooraj}} \ $|$ \
+    \faLinkedin \ \href{https://linkedin.com/in/whysooraj}{\underline{linkedin.com/in/whysooraj}}
+\end{center}
+
+%-----------EDUCATION-----------%
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {SRM University, AP}{Aug 2024 -- May 2028}
+      {B.Tech in Computer Science \& Engineering \textbf{(CGPA: 9.08 / 10.0)}}{Amaravati, India}
+  \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------%
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, C, C++, TypeScript, SQL, POSIX Shell} \\
+     \textbf{ML \& Agent Systems}{: PyTorch, XGBoost, Scikit-Learn, Sentence-Transformers, NumPy, MCP (JSON-RPC 2.0), FastAPI, Qiskit} \\
+     \textbf{Infra \& Tooling}{: Docker, Redis, Celery, Linux, Git, Pytest, GitHub Actions CI, Open Quantum Safe (\texttt{liboqs})}
+    }}
+ \end{itemize}
+
+%-----------EXPERIENCE-----------%
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {SRM University, AP}{May 2026 -- Jul 2026}
+      {Summer Research Intern (CSE Dept) — \href{https://github.com/whysooraj/aqpqc}{\underline{AQPQC Selector}}}{Amaravati, India}
+      \resumeItemListStart
+        \resumeItem{Trained resource-constrained XGBoost and Random Forest classifiers with multi-objective Pareto post-filtering to select NIST PQC primitives (ML-KEM, ML-DSA, SLH-DSA, Falcon), achieving \textbf{$>$96\% accuracy} at \textbf{$<$2ms inference}.}
+        \resumeItem{Built passive Linux \texttt{TCP\_INFO} kernel telemetry extraction and exported the decision logic to a freestanding zero-\texttt{malloc} C99 single-header engine (\texttt{include/aqpqc.h}) with audit-compliant decision explainability.}
+        \resumeItem{Benchmarked NIST algorithms via \texttt{liboqs} on ARM and x86-64 Linux across varying RAM, MTU, and packet-loss profiles.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------%
+\section{Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\href{https://github.com/whysooraj/dev-context}{\textbf{\underline{dev-context}}} $|$ \emph{Python stdlib, MCP, JSON-RPC 2.0, Multi-Agent Handoff}}{\href{https://github.com/whysooraj/dev-context}{\underline{GitHub}} $|$ \href{https://m8ven.ai/mcp/whysooraj/dev-context}{\underline{MCP}}}
+          \resumeItemListStart
+            \resumeItem{Engineered a local-first context engine and zero-dependency stdio MCP server exposing 8 primary tools for autonomous agent session resumption across Claude Code, Cursor, and Codex.}
+            \resumeItem{Built an automated blind cross-agent handoff test suite (\texttt{test\_blind\_agent\_handoff.py}) verifying autonomous task continuation from structured handoff state without human re-briefing.}
+            \resumeItem{Scaled parallel workspace indexing to 1,000 repos (\textbf{70.9ms P50} at 100 repos, \textbf{744ms P50} at 1,000 repos) backed by atomic POSIX \texttt{flock} + \texttt{os.replace} state persistence.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\href{https://github.com/whysooraj/laya-file-organizer}{\textbf{\underline{Laya File Organizer}}} $|$ \emph{Python, PyTorch, Non-Autoregressive Decision Engine}}{\href{https://github.com/whysooraj/laya-file-organizer}{\underline{GitHub}} $|$ \href{https://laya.sooraj.fun}{\underline{Live}}}
+          \resumeItemListStart
+            \resumeItem{Built a local CPU file classification utility using Laya's non-autoregressive multi-head router (\texttt{choice} + \texttt{noul} heads) to classify files across 12 categories in \textbf{$\sim$33ms/file} with zero cloud API calls.}
+            \resumeItem{Implemented calibrated abstention gating ($<0.50$ confidence routed to \texttt{Uncertain/}), junk quarantine ($>0.70$), collision-safe suffixing, and dry-run preview verification.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\href{https://github.com/whysooraj/snorlax}{\textbf{\underline{Project Snorlax}}} $|$ \emph{Python, FastAPI, Redis Streams, Sentence-Transformers, DBSCAN}}{\href{https://github.com/whysooraj/snorlax}{\underline{GitHub}}}
+          \resumeItemListStart
+            \resumeItem{Engineered an automated microservice root-cause analysis pipeline vectorizing incoming Redis Streams error bursts with local Sentence-Transformers embeddings.}
+            \resumeItem{Applied DBSCAN density clustering via asynchronous Celery workers to separate cascade noise from primary crash events before generating diagnostic summaries.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\href{https://github.com/whysooraj/Quanevac}{\textbf{\underline{Quanevac}}} $|$ \emph{Python, PyTorch LSTM, Qiskit QAOA, FastAPI, OSRM}}{\href{https://github.com/whysooraj/Quanevac}{\underline{GitHub}}}
+          \resumeItemListStart
+            \resumeItem{Built a PyTorch LSTM flood-risk forecaster predicting road-segment inundation probabilities at $T{+}0\text{h}$, $T{+}12\text{h}$, and $T{+}24\text{h}$ horizons to feed congestion-aware QUBO route formulation.}
+            \resumeItem{Integrated Qiskit Aer / \texttt{qiskit-ibm-runtime} QAOA solvers with OSRM road geometry and a FastAPI + React interactive corridor map.}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%-----------TECHNICAL WRITING & EVALUATION-----------%
+\section{Technical Writing \& Evaluation}
+ \begin{itemize}[leftmargin=0.15in, label=\textbullet]
+    \small{
+     \item \textbf{Engineering Blog} (\href{https://blog.sooraj.fun}{\underline{blog.sooraj.fun}}): Wrote empirical benchmarks comparing compact reasoning models (\textit{VibeThinker-3B: Reasoning vs Agency}) and non-autoregressive classifiers vs cloud/local LLMs.
+     \item \textbf{MCP Registry \& CI}: Published verified \texttt{dev-context} v1.0.0 MCP manifest (\texttt{server.json}) with reproducible benchmark scripts and multi-OS CI test suites.
+    }
+ \end{itemize}
+
+\end{document}
